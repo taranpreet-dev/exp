@@ -1,0 +1,485 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><title>IronPulse Gym</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Chivo:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; min-height: 100%; } body { overscroll-behavior-y: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary-fixed-dim": "#ffb3ae", "surface-dim": "#131314", "on-tertiary-fixed-variant": "#47464b", "on-error": "#690005", "background": "#131314", "surface-container-lowest": "#0e0e0f", "on-tertiary": "#303034", "on-secondary": "#680015", "error-container": "#93000a", "on-surface-variant": "#e8bcb8", "surface-tint": "#ffb3ae", "primary": "#ffb3ae", "tertiary-fixed": "#e4e1e7", "on-primary": "#68000b", "tertiary-container": "#737277", "on-tertiary-container": "#fbf8fe", "on-primary-container": "#fff8f7", "surface-container-high": "#2a2a2b", "on-secondary-container": "#ffeceb", "surface-variant": "#353436", "surface": "#131314", "on-primary-fixed": "#410004", "on-tertiary-fixed": "#1b1b1f", "secondary-fixed-dim": "#ffb3b3", "secondary-container": "#da0137", "surface-container": "#201f20", "on-background": "#e5e2e3", "on-surface": "#e5e2e3", "inverse-primary": "#c0001e", "primary-container": "#e60026", "outline-variant": "#5e3f3c", "surface-container-low": "#1c1b1c", "on-secondary-fixed": "#400009", "surface-bright": "#39393a", "secondary": "#ffb3b3", "inverse-on-surface": "#313031", "secondary-fixed": "#ffdad9", "error": "#ffb4ab", "tertiary-fixed-dim": "#c8c5cb", "tertiary": "#c8c5cb", "inverse-surface": "#e5e2e3", "outline": "#af8784", "primary-fixed": "#ffdad7", "on-secondary-fixed-variant": "#920022", "surface-container-highest": "#353436", "on-error-container": "#ffdad6", "on-primary-fixed-variant": "#930014" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-lg": "1.5rem", "margin-mobile": "1rem", "gutter-mobile": "0.75rem", "gutter": "1.5rem", "space-md": "1rem", "margin": "2rem", "space-xl": "2.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem" }, fontFamily: { "display-hero": ["Bebas Neue"], "headline-md": ["Chivo"], "label-lg": ["Chivo"], "body-lg": ["Chivo"], "headline-xl": ["Bebas Neue"], "headline-xl-mobile": ["Bebas Neue"], "headline-lg": ["Bebas Neue"], "label-md": ["Chivo"], "label-sm": ["Chivo"], "body-md": ["Chivo"], "headline-sm": ["Chivo"], "display-hero-mobile": ["Bebas Neue"] }, fontSize: { "display-hero": ["96px", { "lineHeight": "96px", "letterSpacing": "0.04em", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "0.01em", "fontWeight": "800" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-xl": ["48px", { "lineHeight": "48px", "letterSpacing": "0.03em", "fontWeight": "400" }], "headline-xl-mobile": ["36px", { "lineHeight": "36px", "letterSpacing": "0.03em", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "34px", "letterSpacing": "0.02em", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }], "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.12em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "0.02em", "fontWeight": "700" }], "display-hero-mobile": ["56px", { "lineHeight": "56px", "letterSpacing": "0.04em", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="h-16 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="IronPulse Gym Red Logo" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ23F-JV9CnPgIZ_N-WZJtnFy-7tXp1bpIYaA5_tP9-a-SG3lT2vXiztRp7NdnDGwYguaQECki7TwTHwMxD95tD-aftpRFgkpWfQMxyaujO3X0b4Oy0lTjku1ubvxSo6vivQYP6Af29o2aRxz8Myo2qJIDL-G190lClV3MMsFd5LsRi8CyJ_5ZSa5DeotiZmxP5mzWah8f76NM3sVK5o75GPZzbUA079tao55JlEJiIIGIon20681Q0g"><div class="flex flex-col truncate"><span class="font-headline-sm text-headline-sm text-on-surface tracking-wider uppercase truncate">IRONPULSE</span><span class="font-label-sm text-label-sm text-primary tracking-widest uppercase">Home</span></div></div><div class="flex items-center gap-space-xs shrink-0"><a class="min-h-[44px] min-w-[44px] px-space-sm flex items-center justify-center gap-space-xs bg-primary-container text-on-primary-container active:scale-95 transition-transform" href="tel:9592620529"><span class="material-symbols-outlined text-[18px]">call</span><span class="font-label-md text-label-md hidden sm:inline tracking-wider">CALL</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-36 bg-surface"><div class="flex flex-col w-full text-on-surface">
+<!-- TOP ALERT BANNER -->
+<section class="bg-primary-container px-margin-mobile py-space-xs text-on-primary-container flex items-center justify-between shadow-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] animate-pulse">local_fire_department</span>
+<span class="font-label-md text-label-md tracking-wider uppercase font-bold">1-Day VIP Trial Pass Available</span>
+</div>
+<button class="bg-surface-container-lowest px-space-xs py-0.5 text-primary text-label-sm font-label-sm font-bold uppercase tracking-widest active:scale-95 transition-transform" onclick="openTrialModal()">
+      Claim Now
+    </button>
+</section>
+<!-- HERO SECTION -->
+<section class="relative px-margin-mobile pt-space-lg pb-space-xl bg-surface-container-lowest overflow-hidden">
+<div class="absolute -right-20 -top-20 w-72 h-72 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-space-sm">
+<div class="inline-flex items-center gap-space-xs bg-surface-container-high px-space-sm py-1 self-start">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Subterranean Strength Lab</span>
+</div>
+<h1 class="font-display-hero-mobile text-display-hero-mobile text-on-surface uppercase leading-none tracking-tight">
+        TRANSFORM<br>
+<span class="text-primary-container">YOUR PHYSIQUE</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">
+        High-octane training arena engineered for extreme muscle hypertrophy, raw powerlifting, and aggressive metabolic conditioning.
+      </p>
+<!-- Stat Badges Row -->
+<div class="grid grid-cols-3 gap-space-xs my-space-xs">
+<div class="bg-surface-container p-space-xs flex flex-col items-center justify-center">
+<span class="font-headline-lg text-headline-lg text-primary leading-none">5:30A</span>
+<span class="font-label-sm text-label-sm text-tertiary uppercase text-center mt-1">Daily Kickoff</span>
+</div>
+<div class="bg-surface-container p-space-xs flex flex-col items-center justify-center">
+<span class="font-headline-lg text-headline-lg text-primary-container leading-none">12K</span>
+<span class="font-label-sm text-label-sm text-tertiary uppercase text-center mt-1">Sq.Ft Floor</span>
+</div>
+<div class="bg-surface-container p-space-xs flex flex-col items-center justify-center">
+<span class="font-headline-lg text-headline-lg text-on-surface leading-none">100%</span>
+<span class="font-label-sm text-label-sm text-tertiary uppercase text-center mt-1">Pure Iron</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<button class="w-full min-h-[48px] bg-primary-container text-on-primary-container font-label-lg text-label-lg uppercase tracking-wider flex items-center justify-center gap-space-xs shadow-lg active:scale-98 transition-transform" onclick="openTrialModal()">
+<span class="material-symbols-outlined text-[20px]">fitness_center</span>
+<span class="">Claim 1-Day Free Trial</span>
+</button>
+<a class="w-full min-h-[44px] bg-surface-container-high text-on-surface font-label-md text-label-md uppercase tracking-wider flex items-center justify-center gap-space-xs active:bg-surface-bright transition-colors" href="tel:9592620529">
+<span class="material-symbols-outlined text-primary text-[18px]">call</span>
+<span class="">Call 959-262-0529</span>
+</a>
+</div>
+</div>
+</section>
+<!-- QUICK TAP-TO-COMMUNICATION BAR -->
+<section class="bg-surface-container-low px-margin-mobile py-space-sm shadow-inner">
+<div class="flex items-center justify-between gap-space-xs">
+<a class="flex-1 min-h-[44px] bg-surface-container-highest text-on-surface px-space-sm flex items-center justify-center gap-space-xs active:scale-95 transition-transform" href="tel:9592620529">
+<span class="material-symbols-outlined text-primary-container text-[18px]">dialer_sip</span>
+<div class="flex flex-col items-start leading-none">
+<span class="font-label-sm text-label-sm text-tertiary uppercase">Hotline Direct</span>
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-wider">9592620529</span>
+</div>
+</a>
+<a class="flex-1 min-h-[44px] bg-[#25D366] text-surface-container-lowest font-headline-sm text-headline-sm uppercase px-space-sm flex items-center justify-center gap-space-xs tracking-wider active:scale-95 transition-transform" href="https://wa.me/919592620529?text=Hi%20IronPulse%20Gym%2C%20I%20want%20to%20claim%20my%201-Day%20Free%20Trial%21" target="_blank">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span class="">WhatsApp</span>
+</a>
+</div>
+</section>
+<!-- HIGHLIGHTED MEMBERSHIP PRICING TEASER -->
+<section class="px-margin-mobile py-space-lg bg-surface flex flex-col gap-space-md">
+<div class="flex items-end justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase tracking-widest">Transparent Rates</span>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface uppercase">MEMBERSHIP TIERS</h2>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-tertiary uppercase">Plans Start At</span>
+<div class="font-headline-lg text-headline-lg text-primary leading-none">₹799<span class="text-body-md font-body-md text-tertiary">/mo</span></div>
+</div>
+</div>
+<!-- Duration / Discount Toggle -->
+<div class="grid grid-cols-2 bg-surface-container-lowest p-1">
+<button class="py-space-xs text-center font-label-md text-label-md uppercase tracking-wider bg-primary-container text-on-primary-container transition-all" id="toggle-monthly" onclick="switchPricing('monthly')">
+        Monthly Pass
+      </button>
+<button class="py-space-xs text-center font-label-md text-label-md uppercase tracking-wider text-tertiary hover:text-on-surface transition-all" id="toggle-quarterly" onclick="switchPricing('quarterly')">
+        Quarterly (Save 20%)
+      </button>
+</div>
+<!-- Pricing Cards Grid -->
+<div class="flex flex-col gap-space-sm">
+<!-- Tier 1: Basic -->
+<div class="bg-surface-container p-space-md flex flex-col gap-space-xs relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-label-sm text-label-sm text-tertiary uppercase">Entry Iron</span>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase">Basic Tier</h3>
+</div>
+<div class="text-right">
+<span class="font-headline-lg text-headline-lg text-on-surface" id="price-basic">₹799</span>
+<span class="font-label-sm text-label-sm text-tertiary block">/month</span>
+</div>
+</div>
+<ul class="flex flex-col gap-1 text-on-surface-variant text-body-md font-body-md my-space-xs">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+            Full Free-Weight &amp; Machine Access
+          </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+            Locker &amp; Shower Access
+          </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+            Free Parking Spot
+          </li>
+</ul>
+<button class="w-full min-h-[44px] bg-surface-container-highest text-on-surface font-label-md text-label-md uppercase tracking-wider active:bg-primary-container active:text-on-primary-container transition-colors" onclick="openTrialModal('Basic Tier')">
+          Select Basic
+        </button>
+</div>
+<!-- Tier 2: Pro (Best Value) -->
+<div class="bg-surface-container-high p-space-md flex flex-col gap-space-xs relative shadow-xl">
+<div class="absolute top-0 right-0 bg-primary-container text-on-primary-container font-label-sm text-label-sm px-space-sm py-0.5 uppercase tracking-wider font-bold">
+          Most Popular
+        </div>
+<div class="flex justify-between items-start mt-space-xs">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase">Hardcore Athlete</span>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase">Pro Performance</h3>
+</div>
+<div class="text-right">
+<span class="font-headline-lg text-headline-lg text-primary-container" id="price-pro">₹999</span>
+<span class="font-label-sm text-label-sm text-tertiary block">/month</span>
+</div>
+</div>
+<ul class="flex flex-col gap-1 text-on-surface text-body-md font-body-md my-space-xs">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+            Everything in Basic
+          </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+            CrossFit Rig &amp; Heavy Bag Floor
+          </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+            1 Monthly Trainer Assessment
+          </li>
+</ul>
+<button class="w-full min-h-[44px] bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider active:scale-95 transition-transform" onclick="openTrialModal('Pro Performance')">
+          Unlock Pro Access
+        </button>
+</div>
+<!-- Tier 3: Elite -->
+<div class="bg-surface-container p-space-md flex flex-col gap-space-xs">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-label-sm text-label-sm text-tertiary uppercase">VIP Recovery</span>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase">Elite Powerhouse</h3>
+</div>
+<div class="text-right">
+<span class="font-headline-lg text-headline-lg text-on-surface" id="price-elite">₹1199</span>
+<span class="font-label-sm text-label-sm text-tertiary block">/month</span>
+</div>
+</div>
+<ul class="flex flex-col gap-1 text-on-surface-variant text-body-md font-body-md my-space-xs">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+            Full Facility Unlimited Access
+          </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+            Steam &amp; Finnish Sauna Privileges
+          </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check</span>
+            Dedicated Reserved Personal Locker
+          </li>
+</ul>
+<button class="w-full min-h-[44px] bg-surface-container-highest text-on-surface font-label-md text-label-md uppercase tracking-wider active:bg-primary-container active:text-on-primary-container transition-colors" onclick="openTrialModal('Elite Powerhouse')">
+          Claim Elite Status
+        </button>
+</div>
+</div>
+</section>
+<!-- INTERACTIVE GYM FACILITIES & ZONES -->
+<section class="px-margin-mobile py-space-lg bg-surface-container-lowest flex flex-col gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase tracking-widest">Engineered Layout</span>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface uppercase">ARENA ZONES</h2>
+</div>
+<!-- Facility Tabs -->
+<div class="flex overflow-x-auto gap-space-xs pb-1 no-scrollbar">
+<button class="px-space-md py-space-xs whitespace-nowrap bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider shrink-0 transition-colors" id="tab-strength" onclick="selectZone('strength')">
+        Strength &amp; Heavy Iron
+      </button>
+<button class="px-space-md py-space-xs whitespace-nowrap bg-surface-container text-tertiary font-label-md text-label-md uppercase tracking-wider shrink-0 transition-colors" id="tab-cardio" onclick="selectZone('cardio')">
+        Cardio Deck
+      </button>
+<button class="px-space-md py-space-xs whitespace-nowrap bg-surface-container text-tertiary font-label-md text-label-md uppercase tracking-wider shrink-0 transition-colors" id="tab-crossfit" onclick="selectZone('crossfit')">
+        CrossFit Rig
+      </button>
+<button class="px-space-md py-space-xs whitespace-nowrap bg-surface-container text-tertiary font-label-md text-label-md uppercase tracking-wider shrink-0 transition-colors" id="tab-sauna" onclick="selectZone('sauna')">
+        Steam &amp; Sauna
+      </button>
+</div>
+<!-- Facility Dynamic Content Display Card -->
+<div class="bg-surface-container p-space-md flex flex-col gap-space-sm" id="zone-card">
+<div class="relative w-full h-48 overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="High-intensity heavy iron powerlifting gym with calibrated black iron plates, barbells loaded with heavy weights on competition benches, moody red neon perimeter lighting, raw concrete walls and industrial aesthetic." id="zone-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD-WNisSdqF852izyQOebpGjxSRm6IGFf0voYFXwGCIrSXcxg487DWFl_AlEOvJon42UaZhSjPaXgzAizlOE2eGy8u4UteCY372iM2qAc8iYrOSYR8YlwbODJgnCZI4MQ1gHLC4vkLTU25WL8KxD30yxZHDTAw5ahUkx8j2-_JydPRTMcHzDcKq_7c3M3JB4Sf2TtKXPlMmC2R566G9ca86cnaDBTkQfOq6D_jgcntLI4WnnN673ZAHg">
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 px-space-xs py-0.5 text-primary font-label-sm text-label-sm uppercase tracking-wider">
+<span id="zone-tag" class="">5 Competition Squat Racks</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase" id="zone-title">Heavy Iron &amp; Dumbbell Arena</h3>
+<p class="font-body-md text-body-md text-on-surface-variant" id="zone-desc">
+        Loaded with Eleiko barbells, calibrated steel plates, custom dumbbells up to 60KG, and Olympic deadlift platforms with noise-dampening high-density rubber tiles.
+      </p>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs" id="zone-specs">
+<div class="bg-surface-container-high p-space-xs">
+<span class="font-label-sm text-label-sm text-tertiary uppercase block">Dumbbell Max</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">60 KG Pairs</span>
+</div>
+<div class="bg-surface-container-high p-space-xs">
+<span class="font-label-sm text-label-sm text-tertiary uppercase block">Platforms</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">6 Olympic Cages</span>
+</div>
+</div>
+</div>
+</section>
+<!-- KEY GYM INFO & AMENITIES GRID -->
+<section class="px-margin-mobile py-space-lg bg-surface flex flex-col gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase tracking-widest">Subterranean Facility</span>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface uppercase">AMENITIES &amp; STATS</h2>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="bg-surface-container p-space-sm flex flex-col gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[28px]">schedule</span>
+<span class="font-label-sm text-label-sm text-tertiary uppercase">Operating Hours</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">5:30 AM – 10:30 PM</span>
+<span class="font-label-sm text-label-sm text-primary uppercase">Open All 7 Days</span>
+</div>
+<div class="bg-surface-container p-space-sm flex flex-col gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[28px]">sports_martial_arts</span>
+<span class="font-label-sm text-label-sm text-tertiary uppercase">Coaching Staff</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Certified Mentors</span>
+<span class="font-label-sm text-label-sm text-primary uppercase">CSCS &amp; ACSM Elite</span>
+</div>
+<div class="bg-surface-container p-space-sm flex flex-col gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[28px]">restaurant</span>
+<span class="font-label-sm text-label-sm text-tertiary uppercase">Diet Protocol</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">In-House Nutrition</span>
+<span class="font-label-sm text-label-sm text-primary uppercase">Custom Macro Plans</span>
+</div>
+<div class="bg-surface-container p-space-sm flex flex-col gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[28px]">local_parking</span>
+<span class="font-label-sm text-label-sm text-tertiary uppercase">Parking &amp; Storage</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Dedicated Garage</span>
+<span class="font-label-sm text-label-sm text-primary uppercase">Free Valet &amp; Lockers</span>
+</div>
+</div>
+</section>
+<!-- INTERACTIVE BMI CALCULATOR (DELIGHT MOMENT) -->
+
+<!-- TRAINER SPOTLIGHT -->
+
+<!-- ATHLETE REVIEWS -->
+<section class="px-margin-mobile py-space-lg bg-surface-container-lowest flex flex-col gap-space-md"><div class="flex items-center justify-between"><div><span class="font-label-sm text-label-sm text-primary-container uppercase tracking-widest">Arena Coordinates</span><h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface uppercase">LOCATION &amp; ACCESS</h2></div><div class="flex items-center gap-1 bg-surface-container px-space-xs py-1"><span class="material-symbols-outlined text-primary-container text-[18px]">pin_drop</span><span class="font-headline-sm text-headline-sm text-on-surface uppercase">PRIME HUB</span></div></div><div class="bg-surface-container p-space-md flex flex-col gap-space-sm border border-outline-variant/30"><div class="flex items-start gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center shrink-0 mt-0.5"><span class="material-symbols-outlined text-primary-container text-[20px]">location_on</span></div><div class="flex flex-col flex-1"><span class="font-headline-sm text-headline-sm text-on-surface uppercase">IronPulse Headquarters</span><p class="font-body-md text-body-md text-on-surface-variant mt-0.5">2nd Floor, Pulse Fitness Hub, Main Road (Near City Plaza)</p><span class="font-label-sm text-label-sm text-primary uppercase mt-1">Free Covered Parking &amp; Direct Elevator</span></div></div><div class="grid grid-cols-2 gap-space-xs pt-space-xs"><div class="bg-surface-container-high p-space-xs"><span class="font-label-sm text-label-sm text-tertiary uppercase block">Metro Access</span><span class="font-headline-sm text-headline-sm text-on-surface">200M Walk</span></div><div class="bg-surface-container-high p-space-xs"><span class="font-label-sm text-label-sm text-tertiary uppercase block">Front Desk</span><span class="font-headline-sm text-headline-sm text-on-surface">Open 5:30A</span></div></div><a class="w-full min-h-[48px] bg-primary-container text-on-primary-container font-label-lg text-label-lg uppercase tracking-wider flex items-center justify-center gap-space-xs active:scale-95 transition-transform shadow-lg mt-space-xs" href="https://maps.google.com/?q=2nd+Floor+Pulse+Fitness+Hub+Main+Road" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[20px]">directions</span><span class="">Open in Google Maps / Get Directions</span></a></div></section>
+<!-- BOTTOM CONTACT CARD -->
+<section class="px-margin-mobile py-space-xl bg-surface-container-high flex flex-col items-center text-center gap-space-sm">
+<span class="material-symbols-outlined text-primary-container text-[40px]">bolt</span>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface uppercase">READY TO SMASH PRs?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">
+      Drop in anytime between 5:30 AM to 10:30 PM or call our front desk for an immediate walkthrough.
+    </p>
+<a class="w-full min-h-[48px] bg-primary-container text-on-primary-container font-label-lg text-label-lg uppercase tracking-wider flex items-center justify-center gap-space-xs active:scale-95 transition-transform shadow-lg" href="tel:9592620529">
+<span class="material-symbols-outlined text-[20px]">call</span>
+<span class="">Call Front Desk: 9592620529</span>
+</a>
+</section>
+<!-- MODAL: FREE 1-DAY TRIAL REGISTRATION -->
+<div class="fixed inset-0 z-50 bg-surface-container-lowest/90 backdrop-blur-md hidden items-center justify-center p-margin-mobile" id="trial-modal">
+<div class="bg-surface-container-high w-full max-w-sm p-space-lg flex flex-col gap-space-sm shadow-2xl relative">
+<!-- Close Button -->
+<button class="absolute top-3 right-3 text-tertiary hover:text-on-surface p-1 active:scale-90" onclick="closeTrialModal()">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+<div class="flex flex-col gap-space-sm" id="modal-form-container">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">VIP Guest Pass</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface uppercase leading-none">CLAIM 1-DAY FREE PASS</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Experience our high-performance facility completely free for 24 hours.
+        </p>
+<form class="flex flex-col gap-space-xs mt-space-xs" id="trial-form" onsubmit="submitTrialForm(event)">
+<div>
+<label class="font-label-sm text-label-sm text-tertiary uppercase block mb-0.5">Full Name</label>
+<input class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md p-space-xs outline-none focus:bg-surface-variant" id="trial-name" placeholder="John Doe" required="" type="text">
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-tertiary uppercase block mb-0.5">Phone Number</label>
+<input class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md p-space-xs outline-none focus:bg-surface-variant" id="trial-phone" placeholder="9592620529" required="" type="tel">
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-tertiary uppercase block mb-0.5">Preferred Slot</label>
+<select class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md p-space-xs outline-none focus:bg-surface-variant" id="trial-slot">
+<option value="Morning (5:30 AM - 9:00 AM)">Morning (5:30 AM - 9:00 AM)</option>
+<option value="Afternoon (12:00 PM - 4:00 PM)">Afternoon (12:00 PM - 4:00 PM)</option>
+<option value="Evening (5:00 PM - 10:30 PM)">Evening (5:00 PM - 10:30 PM)</option>
+</select>
+</div>
+<button class="w-full min-h-[48px] bg-primary-container text-on-primary-container font-label-lg text-label-lg uppercase tracking-wider mt-space-xs active:scale-95 transition-transform flex items-center justify-center gap-space-xs" type="submit">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+<span class="">Confirm VIP Pass</span>
+</button>
+</form>
+</div>
+<!-- Success Confirmation State (Initially Hidden) -->
+<div class="hidden flex flex-col items-center text-center py-space-md gap-space-xs" id="modal-success-state">
+<span class="material-symbols-outlined text-primary text-[56px] animate-bounce">check_circle</span>
+<h4 class="font-headline-md text-headline-md text-on-surface uppercase">YOU ARE ON THE LIST!</h4>
+<p class="font-body-md text-body-md text-on-surface-variant" id="confirmation-text">
+          Your 1-Day VIP Pass has been activated. Present your phone number at the IronPulse reception desk.
+        </p>
+<button class="w-full min-h-[44px] bg-surface-container-highest text-on-surface font-label-md text-label-md uppercase tracking-wider mt-space-sm" onclick="closeTrialModal()">
+          Back To Arena
+        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- INTERACTION LOGIC (VANILLA JS) -->
+<script>
+  // MODAL LOGIC
+  function openTrialModal(tier) {
+    const modal = document.getElementById('trial-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.getElementById('modal-form-container').classList.remove('hidden');
+    document.getElementById('modal-success-state').classList.add('hidden');
+  }
+
+  function closeTrialModal() {
+    const modal = document.getElementById('trial-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  function submitTrialForm(e) {
+    e.preventDefault();
+    const name = document.getElementById('trial-name').value;
+    const phone = document.getElementById('trial-phone').value;
+    const slot = document.getElementById('trial-slot').value;
+
+    document.getElementById('confirmation-text').innerText = 
+      `Pass verified for ${name} (${phone}) for the ${slot} workout slot. Front desk notified.`;
+
+    document.getElementById('modal-form-container').classList.add('hidden');
+    document.getElementById('modal-success-state').classList.remove('hidden');
+  }
+
+  // PRICING TOGGLE LOGIC
+  let currentBilling = 'monthly';
+  function switchPricing(type) {
+    currentBilling = type;
+    const btnM = document.getElementById('toggle-monthly');
+    const btnQ = document.getElementById('toggle-quarterly');
+    const priceBasic = document.getElementById('price-basic');
+    const pricePro = document.getElementById('price-pro');
+    const priceElite = document.getElementById('price-elite');
+
+    if (type === 'quarterly') {
+      btnQ.className = 'py-space-xs text-center font-label-md text-label-md uppercase tracking-wider bg-primary-container text-on-primary-container transition-all';
+      btnM.className = 'py-space-xs text-center font-label-md text-label-md uppercase tracking-wider text-tertiary hover:text-on-surface transition-all';
+      // Discounted under 1200 rates
+      priceBasic.innerText = '₹649';
+      pricePro.innerText = '₹799';
+      priceElite.innerText = '₹959';
+    } else {
+      btnM.className = 'py-space-xs text-center font-label-md text-label-md uppercase tracking-wider bg-primary-container text-on-primary-container transition-all';
+      btnQ.className = 'py-space-xs text-center font-label-md text-label-md uppercase tracking-wider text-tertiary hover:text-on-surface transition-all';
+      priceBasic.innerText = '₹799';
+      pricePro.innerText = '₹999';
+      priceElite.innerText = '₹1199';
+    }
+  }
+
+  // FACILITY ZONES SWITCHER
+  const zoneData = {
+    strength: {
+      tag: '5 Competition Squat Racks',
+      title: 'Heavy Iron & Dumbbell Arena',
+      desc: 'Loaded with Eleiko barbells, calibrated steel plates, custom dumbbells up to 60KG, and Olympic deadlift platforms with noise-dampening high-density rubber tiles.',
+      spec1Label: 'Dumbbell Max',
+      spec1Val: '60 KG Pairs',
+      spec2Label: 'Platforms',
+      spec2Val: '6 Olympic Cages',
+      alt: 'High-intensity heavy iron powerlifting gym with calibrated black iron plates, barbells loaded with heavy weights on competition benches, moody red neon perimeter lighting, raw concrete walls and industrial aesthetic.'
+    },
+    cardio: {
+      tag: 'HIIT & Endurance Zone',
+      title: 'Commercial Cardio Deck',
+      desc: 'Equipped with commercial curved non-motorized treadmills, Concept2 rowing ergometers, assault bikes, and stair masters with heart rate tracking telemetry.',
+      spec1Label: 'Cardio Stations',
+      spec1Val: '24 Units',
+      spec2Label: 'Ergometers',
+      spec2Val: 'Concept 2 PM5',
+      alt: 'Gym cardio section with sleek curved treadmills and rowers, dark moody red LED lighting, industrial athletic space, cinematic depth of field.'
+    },
+    crossfit: {
+      tag: 'Functional Combat Area',
+      title: 'Heavy CrossFit & Calisthenics Rig',
+      desc: 'Rigid steel multi-station monkey bars, gymnastic rings, medicine ball targets, climbing ropes, and heavy punch bags for aggressive metabolic conditioning.',
+      spec1Label: 'Rig Capacity',
+      spec1Val: '18 Athletes',
+      spec2Label: 'Flooring',
+      spec2Val: 'Shock-Absorb 25mm',
+      alt: 'Industrial crossfit box with heavy steel pull up rig, battle ropes on turf, gymnastic wooden rings hanging, dark dramatic red backlight.'
+    },
+    sauna: {
+      tag: 'Thermotherapy & Recovery',
+      title: 'Cedar Sauna & Eucalyptus Steam',
+      desc: 'High-temperature Finnish dry sauna and aromatic steam chambers engineered to boost vasodilation, clear lactic acid, and accelerate muscular recovery.',
+      spec1Label: 'Sauna Temp',
+      spec1Val: '85°C Dry Heat',
+      spec2Label: 'Steam Therapy',
+      spec2Val: 'Eucalyptus Infused',
+      alt: 'Luxury dark wood modern Finnish sauna cabin with warm red and amber backlighting, steam rising gently, modern zen minimalist gym spa architecture.'
+    }
+  };
+
+  function selectZone(key) {
+    const tabs = ['strength', 'cardio', 'crossfit', 'sauna'];
+    tabs.forEach(t => {
+      const tabBtn = document.getElementById('tab-' + t);
+      if (t === key) {
+        tabBtn.className = 'px-space-md py-space-xs whitespace-nowrap bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider shrink-0 transition-colors';
+      } else {
+        tabBtn.className = 'px-space-md py-space-xs whitespace-nowrap bg-surface-container text-tertiary font-label-md text-label-md uppercase tracking-wider shrink-0 transition-colors';
+      }
+    });
+
+    const data = zoneData[key];
+    document.getElementById('zone-tag').innerText = data.tag;
+    document.getElementById('zone-title').innerText = data.title;
+    document.getElementById('zone-desc').innerText = data.desc;
+    document.getElementById('zone-image').setAttribute('data-alt', data.alt);
+    document.getElementById('zone-specs').innerHTML = `
+      <div class="bg-surface-container-high p-space-xs">
+        <span class="font-label-sm text-label-sm text-tertiary uppercase block">${data.spec1Label}</span>
+        <span class="font-headline-sm text-headline-sm text-on-surface">${data.spec1Val}</span>
+      </div>
+      <div class="bg-surface-container-high p-space-xs">
+        <span class="font-label-sm text-label-sm text-tertiary uppercase block">${data.spec2Label}</span>
+        <span class="font-headline-sm text-headline-sm text-on-surface">${data.spec2Val}</span>
+      </div>
+    `;
+  }
+
+  // BMI CALCULATOR LOGIC
+  function calculateBMI() {
+    const h = parseFloat(document.getElementById('bmi-height').value) / 100;
+    const w = parseFloat(document.getElementById('bmi-weight').value);
+    
+    if (h > 0 && w > 0) {
+      const bmi = (w / (h * h)).toFixed(1);
+      document.getElementById('bmi-score').innerText = bmi;
+      
+      let status = 'Normal / Athletic';
+      if (bmi < 18.5) status = 'Underweight Protocol';
+      else if (bmi >= 25 && bmi < 29.9) status = 'Hypertrophy / Bulking';
+      else if (bmi >= 30) status = 'Fat-Loss Protocol';
+
+      document.getElementById('bmi-status').innerText = status;
+    }
+  }
+</script></main><aside class="fixed bottom-20 inset-x-0 z-40 px-margin-mobile pointer-events-none"><div class="max-w-md mx-auto pointer-events-auto"><a class="w-full min-h-[44px] py-space-sm px-space-md bg-primary-container hover:bg-secondary-container text-on-primary-container flex items-center justify-between shadow-[0_4px_20px_rgba(230,0,38,0.45)] active:translate-x-0.5 transition-all" data-path="membership-checkout" href="#"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[20px]">bolt</span><span class="font-label-lg text-label-lg tracking-widest uppercase">JOIN NOW</span></div><span class="font-label-md text-label-md tracking-wider uppercase text-on-primary-container/80">START TRIAL →</span></a></div></aside><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.5)]" data-active-classes="text-primary-container font-headline-sm"><div class="flex justify-around items-center h-16 px-gutter-mobile"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] transition-colors text-primary-container font-headline-sm" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">home</span><span class="font-label-sm text-label-sm uppercase mt-0.5">Home</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] text-tertiary transition-colors hover:text-on-surface" data-path="workouts-and-classes" href="#"><span class="material-symbols-outlined text-[22px]">fitness_center</span><span class="font-label-sm text-label-sm uppercase mt-0.5">Workouts</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] text-tertiary transition-colors hover:text-on-surface" data-path="membership-pricing" href="#"><span class="material-symbols-outlined text-[22px]">payments</span><span class="font-label-sm text-label-sm uppercase mt-0.5">Pricing</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] text-tertiary transition-colors hover:text-on-surface" data-path="contact-and-location" href="#"><span class="material-symbols-outlined text-[22px]">location_on</span><span class="font-label-sm text-label-sm uppercase mt-0.5">Contact</span></a></div></nav>
+
+</body></html>

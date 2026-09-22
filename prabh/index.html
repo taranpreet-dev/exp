@@ -1,1 +1,1234 @@
+<!DOCTYPE html>
 
+<html class="scroll-smooth" lang="en" style=""><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+/* Custom Ambient Keyframes & Dynamic Surface Animations */
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(233,195,73,0.25), 0 0 35px rgba(115,92,0,0.15); }
+  50% { box-shadow: 0 0 28px rgba(254,214,91,0.5), 0 0 55px rgba(115,92,0,0.3); }
+}
+@keyframes shimmerSweep {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(250%) skewX(-20deg); }
+}
+@keyframes goldenEmberDrift {
+  0% { transform: translateY(105%) translateX(0) scale(0.6); opacity: 0; }
+  25% { opacity: 0.85; transform: translateY(70%) translateX(12px) scale(1); }
+  50% { opacity: 0.6; transform: translateY(40%) translateX(-10px) scale(0.9); }
+  75% { opacity: 0.9; transform: translateY(15%) translateX(15px) scale(1.1); }
+  100% { transform: translateY(-15%) translateX(-5px) scale(0.4); opacity: 0; }
+}
+@keyframes heroPulseRing {
+  0% { transform: scale(0.95); opacity: 0.35; }
+  50% { transform: scale(1.15); opacity: 0.65; }
+  100% { transform: scale(0.95); opacity: 0.35; }
+}
+@keyframes luxuryBorderRadiance {
+  0%, 100% { border-color: rgba(233,195,73,0.3); }
+  50% { border-color: rgba(254,214,91,0.75); }
+}
+@keyframes breathingRing {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  70% { box-shadow: 0 0 0 14px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+@keyframes goldBreathingRing {
+  0% { box-shadow: 0 0 0 0 rgba(233, 195, 73, 0.7); }
+  70% { box-shadow: 0 0 0 16px rgba(233, 195, 73, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(233, 195, 73, 0); }
+}
+
+.animate-float-bob { animation: floatBob 5s ease-in-out infinite; }
+.animate-float-bob-delayed { animation: floatBob 6s ease-in-out 1.5s infinite; }
+.animate-pulse-glow { animation: pulseGlow 4s ease-in-out infinite; }
+.animate-hero-pulse { animation: heroPulseRing 7s ease-in-out infinite; }
+.animate-border-radiance { animation: luxuryBorderRadiance 4s ease-in-out infinite; }
+.animate-breathing-ring { animation: breathingRing 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.animate-gold-ring { animation: goldBreathingRing 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+/* Shimmer overlay utility */
+.shimmer-surface {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-surface::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), rgba(255,224,136,0.35), transparent);
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+}
+.shimmer-surface:hover::after,
+.shimmer-surface.auto-shimmer::after {
+  animation: shimmerSweep 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Card Tilt & Glow Interactive Surface */
+.luxury-card-interactive {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.luxury-card-interactive:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 36px -8px rgba(115, 92, 0, 0.16), 0 0 20px rgba(254, 214, 91, 0.25);
+  border-color: rgba(233, 195, 73, 0.6);
+}
+
+/* Golden particle dot */
+.golden-ember {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffe088 20%, #e9c349 70%, transparent 100%);
+  pointer-events: none;
+  animation: goldenEmberDrift linear infinite;
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-secondary-fixed-variant":"#574500","on-primary":"#ffffff","surface-container-low":"#f5f3ef","on-tertiary-fixed-variant":"#264873","surface-dim":"#dbdad6","secondary-fixed":"#ffe088","inverse-primary":"#bac7e1","outline":"#75777d","on-tertiary-container":"#6585b4","on-error":"#ffffff","surface-container-highest":"#e4e2de","primary-fixed":"#d6e3fe","inverse-on-surface":"#f2f0ed","on-primary-container":"#77849c","on-surface":"#1b1c1a","primary-fixed-dim":"#bac7e1","surface-container-lowest":"#ffffff","surface-tint":"#525f75","on-primary-fixed":"#0e1c2f","outline-variant":"#c5c6cd","tertiary-fixed-dim":"#a8c8fb","primary":"#000000","on-tertiary":"#ffffff","on-secondary-container":"#745c00","on-secondary":"#ffffff","surface-container":"#efeeea","on-background":"#1b1c1a","surface-bright":"#fbf9f5","tertiary":"#000000","on-surface-variant":"#44474c","surface-variant":"#e4e2de","on-error-container":"#93000a","surface-container-high":"#eae8e4","surface":"#fbf9f5","tertiary-container":"#001c3a","secondary-fixed-dim":"#e9c349","secondary-container":"#fed65b","inverse-surface":"#30312e","error-container":"#ffdad6","background":"#fbf9f5","on-tertiary-fixed":"#001c3a","secondary":"#735c00","primary-container":"#0e1c2f","tertiary-fixed":"#d4e3ff","on-primary-fixed-variant":"#3a475c","error":"#ba1a1a","on-secondary-fixed":"#241a00"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"margin":"2rem","gutter-mobile":"1rem","space-xs":"0.25rem","margin-mobile":"1.25rem","space-sm":"0.5rem","gutter":"1.5rem","space-lg":"1.5rem","space-md":"1rem","space-xl":"2.5rem"},"fontFamily":{"body-md":["Plus Jakarta Sans"],"stat-label":["Plus Jakarta Sans"],"headline-lg-mobile":["Playfair Display"],"subheading":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"caption":["Plus Jakarta Sans"],"label-eyebrow":["Plus Jakarta Sans"],"stat-value":["Playfair Display"],"headline-lg":["Playfair Display"],"headline-hero-mobile":["Playfair Display"],"headline-md":["Playfair Display"],"headline-sm":["Playfair Display"],"headline-hero":["Playfair Display"]},"fontSize":{"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"stat-label":["13px",{"lineHeight":"18px","letterSpacing":"0.05em","fontWeight":"500"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","fontWeight":"600"}],"subheading":["18px",{"lineHeight":"28px","letterSpacing":"0.01em","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"26px","fontWeight":"400"}],"caption":["12px",{"lineHeight":"18px","fontWeight":"400"}],"label-eyebrow":["12px",{"lineHeight":"16px","letterSpacing":"0.15em","fontWeight":"700"}],"stat-value":["32px",{"lineHeight":"38px","fontWeight":"700"}],"headline-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-hero-mobile":["36px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-md":["28px",{"lineHeight":"36px","fontWeight":"500"}],"headline-sm":["22px",{"lineHeight":"30px","fontWeight":"500"}],"headline-hero":["56px",{"lineHeight":"66px","letterSpacing":"-0.02em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-secondary/10"><div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md"><div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center shadow-sm relative overflow-hidden group"><span class="material-symbols-outlined text-secondary text-[22px] relative z-10 transition-transform duration-300 group-hover:scale-110">villa</span><div class="absolute inset-0 bg-secondary/15 opacity-0 group-hover:opacity-100 transition-opacity"></div></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface leading-none">Handa Properties</span><span class="font-label-eyebrow text-caption uppercase text-secondary tracking-widest mt-1">Your Trusted Property Partner</span></div></div><nav class="hidden xl:flex items-center gap-gutter" data-active-classes="font-body-md text-body-md font-bold text-on-surface bg-surface-container-high px-space-sm py-space-xs rounded-lg shadow-sm"><a aria-current="page" class="transition-colors font-body-md text-body-md font-bold text-on-surface bg-surface-container-high px-space-sm py-space-xs rounded-lg shadow-sm" data-path="home" href="#">Home</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-1 hover:translate-y-[-1px] inline-block" data-path="featured-villa" href="#">Featured Villa</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-1 hover:translate-y-[-1px] inline-block" data-path="specifications" href="#">Specifications</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-1 hover:translate-y-[-1px] inline-block" data-path="floor-plan-and-gallery" href="#">Floor Plan &amp; Gallery</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-1 hover:translate-y-[-1px] inline-block" data-path="location-and-vastu" href="#">Location &amp; Vastu</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-1 hover:translate-y-[-1px] inline-block" data-path="contact" href="#booking-section">Contact</a></nav><div class="flex items-center gap-space-sm"><div class="hidden md:flex items-center gap-space-xs"><a class="hidden lg:flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-caption hover:bg-surface-container hover:text-on-surface transition-all hover:shadow-sm" href="tel:+919592261233"><span class="material-symbols-outlined text-[16px] text-secondary">call</span><span class="">+91 9592261233</span></a><a class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-caption hover:bg-surface-container hover:text-on-surface transition-all hover:shadow-sm" href="tel:+919855055716"><span class="material-symbols-outlined text-[16px] text-secondary">call</span><span class="">+91 9855055716</span></a></div><a class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-secondary text-on-secondary font-body-md text-stat-label shadow-sm hover:bg-secondary-container hover:text-on-secondary-container transition-all relative overflow-hidden shimmer-surface active:scale-95" href="https://wa.me/919592261233" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[18px]">chat</span><span class="hidden sm:inline">WhatsApp</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs shadow-sm"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TOP TICKER ANNOUNCEMENT RIBBON -->
+<section class="w-full bg-primary-container text-on-primary py-2.5 px-margin border-b border-secondary/20 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-secondary/10 via-transparent to-secondary/10 pointer-events-none"></div>
+<div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-space-sm text-caption relative z-10">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold uppercase text-[10px] tracking-widest shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span> Exclusive Release
+        </span>
+<span class="font-body-md text-slate-300 hidden md:inline">Handa Properties Flagship: 180 Gaj Ultra-Luxury 2-Storey Independent Villa</span>
+</div>
+<div class="flex items-center gap-gutter text-on-primary">
+<div class="flex items-center gap-1.5 text-secondary-fixed">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="font-medium tracking-wide">100% Vastu Compliant</span>
+</div>
+<div class="hidden sm:flex items-center gap-1.5 text-slate-300">
+<span class="material-symbols-outlined text-[16px] text-secondary">support_agent</span>
+<span class="">Lead Desk: <strong class="text-on-primary font-semibold">Kulwinder Singh</strong></span>
+</div>
+<a class="flex items-center gap-1 text-secondary-fixed font-bold hover:underline transition-all" href="tel:+919592261233">
+<span class="material-symbols-outlined text-[15px]">call</span> +91 9592261233
+        </a>
+</div>
+</div>
+</section>
+<!-- CINEMATIC HERO OVERLAY SECTION -->
+<section class="relative w-full overflow-hidden bg-surface py-space-xl lg:py-24">
+<!-- Ambient gold atmospheric underglow with pulsing & dust effect -->
+<div class="absolute -top-40 right-10 w-96 h-96 rounded-full bg-secondary-container/25 blur-3xl pointer-events-none animate-hero-pulse"></div>
+<div class="absolute top-1/3 left-1/4 w-80 h-80 rounded-full bg-secondary/10 blur-[100px] pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-primary-container/5 blur-3xl pointer-events-none"></div>
+<!-- Subtle ambient floating gold dust in hero -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none" id="hero-particles-container"></div>
+<div class="max-w-7xl mx-auto px-margin relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Left Hero Copy & Identity -->
+<div class="lg:col-span-6 flex flex-col items-start space-y-space-md">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-high border border-secondary/25 shadow-sm hover:border-secondary/50 transition-colors animate-border-radiance">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
+<span class="font-label-eyebrow text-label-eyebrow uppercase text-secondary">HANDA PROPERTIES • PRIVATE ESTATE</span>
+</div>
+<div class="space-y-space-xs">
+<h1 class="font-headline-hero text-headline-hero text-on-surface tracking-tight leading-[1.08]">
+              Your Dream <br/>
+<span class="italic font-normal font-headline-hero text-secondary relative inline-block">
+                Home
+                <span class="absolute bottom-1 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary/40 to-transparent"></span>
+</span> Awaits You!
+            </h1>
+<p class="font-subheading text-subheading text-on-surface-variant max-w-xl pt-space-xs">
+              A bespoke 2-storey independent architectural sanctuary built on 180 Gaj of prime residential land. Designed with harmonic Vastu precision, Italian marble corridors, and double-height daylight ceilings.
+            </p>
+</div>
+<!-- Quick Micro-Pills Bar -->
+<div class="w-full flex flex-wrap gap-2 pt-space-xs">
+<span class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-all text-on-surface font-stat-label text-caption flex items-center gap-1.5 border border-secondary/15 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">domain</span>
+              180 Gaj (21 × 60 Ft)
+            </span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-all text-on-surface font-stat-label text-caption flex items-center gap-1.5 border border-secondary/15 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">bed</span>
+              4 BHK En-suite
+            </span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-all text-on-surface font-stat-label text-caption flex items-center gap-1.5 border border-secondary/15 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">countertops</span>
+              2 Modular Kitchens
+            </span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-all text-on-surface font-stat-label text-caption flex items-center gap-1.5 border border-secondary/15 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">temple_hindu</span>
+              Dedicated Puja Room
+            </span>
+</div>
+<!-- Primary Dual Luxury CTA Suite -->
+<div class="flex flex-wrap items-center gap-space-md pt-space-sm w-full">
+<a class="px-space-xl py-3.5 rounded-lg bg-primary-container text-on-primary font-stat-label text-stat-label shadow-xl hover:bg-black transition-all flex items-center gap-2 group shimmer-surface auto-shimmer hover:scale-[1.02] active:scale-[0.98]" href="#booking-section">
+<span class="">Schedule Private Tour</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1.5 transition-transform text-secondary-fixed">calendar_month</span>
+</a>
+<a class="px-space-lg py-3.5 rounded-lg bg-secondary text-on-secondary font-stat-label text-stat-label shadow-md hover:bg-secondary-container hover:text-on-secondary-container transition-all flex items-center gap-2 animate-gold-ring hover:scale-[1.02] active:scale-[0.98] shimmer-surface" href="https://wa.me/919592261233?text=Hello%20Handa%20Properties,%20I%20am%20interested%20in%20the%20180%20Gaj%202-Storey%20Villa" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span class="">WhatsApp Direct</span>
+</a>
+</div>
+<!-- Consultant Verification Card -->
+<div class="mt-4 p-space-md w-full bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md border border-secondary/20 transition-all flex items-center justify-between gap-space-sm luxury-card-interactive">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-primary-container text-secondary flex items-center justify-center font-headline-sm font-bold shadow-inner relative overflow-hidden group">
+<span class="relative z-10">KS</span>
+<div class="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-transparent"></div>
+</div>
+<div>
+<span class="font-body-md text-caption uppercase tracking-wider text-secondary block font-bold">Senior Property Director</span>
+<span class="font-headline-sm text-[18px] text-on-surface font-semibold block">Kulwinder Singh</span>
+<span class="font-body-md text-caption text-on-surface-variant">Handa Properties • 18+ Yrs Local Expertise</span>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-2">
+<a class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-secondary hover:text-on-secondary transition-all text-caption font-bold flex items-center gap-1 shadow-xs hover:scale-105" href="tel:+919592261233">
+<span class="material-symbols-outlined text-[15px]">call</span> 9592261233
+              </a>
+<a class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-secondary hover:text-on-secondary transition-all text-caption font-bold flex items-center gap-1 shadow-xs hover:scale-105" href="tel:+919855055716">
+<span class="material-symbols-outlined text-[15px]">call</span> 9855055716
+              </a>
+</div>
+</div>
+</div>
+<!-- Right Hero Visual Sanctuary -->
+<div class="lg:col-span-6 relative mt-6 lg:mt-0">
+<!-- Outer Architectural Framing -->
+<div class="relative rounded-2xl overflow-hidden shadow-2xl bg-surface-container-high border-2 border-secondary/30 group luxury-card-interactive">
+<!-- Lighting Simulation Toggle Pill -->
+<div class="absolute top-4 left-4 z-20 bg-primary-container/85 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-2 text-on-primary text-caption border border-secondary/20 shadow-md">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="font-stat-label text-[11px] uppercase tracking-wider">Independent Double Storey Elevation</span>
+</div>
+<!-- Price & Handover Badge -->
+<div class="absolute top-4 right-4 z-20 bg-secondary text-on-secondary px-3.5 py-1.5 rounded-lg shadow-lg font-stat-label text-caption flex items-center gap-1 font-bold shimmer-surface auto-shimmer">
+<span class="material-symbols-outlined text-[16px]">key</span>
+<span class="">Ready for Immediate Possession</span>
+</div>
+<!-- Villa Elevation Main Graphic -->
+<div class="relative w-full aspect-[4/5] sm:aspect-[1/1] lg:aspect-[4/5] max-h-[580px] overflow-hidden">
+<img class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" data-alt="Photorealistic frontal architectural photograph of a luxurious classical modern two-storey independent villa in golden hour twilight. The facade exhibits elegant European arches, warm limestone masonry, balustraded first-floor balconies, soft ambient warm soffit downlighting, an ornamental wrought iron boundary gate, polished paved driveway with a covered garage, and lush trimmed perimeter plants under a calm azure sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmRgHkCG07wz36VOiPARPhdtttjWCJTVnl6PDN4gm3E-pl_awGk91n5V1J_f8Pp1FXzJ-Bv2RKbUy5KsBe-4m8I-ObVhD0_P7yOwiOKAUlirwVD4XWxJ6JTIVIsXTarJPhygHdlmw6GxAFz-b9ps6ZEoMHPs5Y36lIWhwZzHwzdCQQOnlktp6pYAEv0ES1t-uaH3epUXiMz_K96HEtm8R0Mo8W4-RCXT5tp7-7iW2LR8t9OuttLblb"/>
+<!-- Subtle dark gradient scrim at bottom for text legibility -->
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-transparent to-black/20 opacity-80"></div>
+<!-- Bottom Architectural Stamp -->
+<div class="absolute bottom-0 inset-x-0 p-space-md text-on-primary flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-eyebrow text-caption uppercase text-secondary-fixed tracking-widest block">Signature Elevation</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold">27 × 60 Ft Architectural Frontage</h3>
+</div>
+<div class="text-right p-2 rounded-lg bg-black/40 backdrop-blur-sm border border-secondary/20 animate-float-bob">
+<span class="font-stat-value text-[24px] text-secondary-fixed block leading-none font-bold">180 Gaj</span>
+<span class="font-caption text-caption text-slate-300">Total Plot Area</span>
+</div>
+</div>
+<div class="w-full h-0.5 bg-gradient-to-r from-secondary/50 via-secondary to-secondary/30 mt-2"></div>
+<div class="flex items-center justify-between text-caption pt-1 text-slate-300">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-secondary">explore</span> Auspicious East Facing</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-secondary">car_repair</span> Covered Portico + EV Ready</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Overlapping Floating Dimension Card (With smooth bobbing effect) -->
+<div class="hidden sm:flex absolute -bottom-6 -left-6 z-30 p-space-md rounded-xl bg-surface-container-lowest shadow-2xl border border-secondary/30 items-center gap-space-sm max-w-xs animate-float-bob-delayed hover:scale-105 transition-transform backdrop-blur-md">
+<div class="w-12 h-12 rounded-lg bg-secondary/15 flex items-center justify-center text-secondary relative overflow-hidden">
+<span class="material-symbols-outlined text-[28px] relative z-10">square_foot</span>
+<div class="absolute inset-0 bg-secondary-container/20"></div>
+</div>
+<div>
+<span class="font-stat-label text-caption uppercase text-on-surface-variant tracking-wider font-semibold block">Living Volume</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface block">3,400+ Sq. Ft</span>
+<span class="font-body-md text-[11px] text-secondary leading-none">Spanning Ground &amp; First Floor</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ARCHITECTURAL METRIC RIBBON (180 Gaj, 21x60, 2 Storey, 4 BHK) -->
+<section class="w-full bg-surface-container-low py-space-xl border-y border-secondary/15 relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-margin relative z-10">
+<div class="text-center max-w-2xl mx-auto mb-space-lg space-y-2">
+<span class="font-label-eyebrow text-label-eyebrow uppercase text-secondary tracking-widest font-bold inline-block border-b border-secondary/30 pb-0.5">AUTHENTIC DIMENSIONS &amp; SPATIAL OVERVIEW</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold">Engineered For Generous Generations</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Every square yard has been surveyed, planned according to Vedic geometry, and finished with structural grade-53 reinforcement.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Metric Tile 1 -->
+<div class="relative p-space-lg rounded-xl bg-surface-container-lowest shadow-md hover:shadow-2xl transition-all duration-300 border border-secondary/20 flex flex-col items-center text-center group luxury-card-interactive shimmer-surface">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center mb-space-sm text-secondary group-hover:bg-primary-container group-hover:text-secondary-fixed transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[30px] group-hover:scale-110 transition-transform">landscape</span>
+</div>
+<span class="font-stat-value text-stat-value text-on-surface tracking-tight group-hover:text-secondary transition-colors">180 Gaj</span>
+<span class="font-stat-label text-caption uppercase tracking-wider text-secondary font-bold mt-1">180 Sq. Yards</span>
+<div class="w-12 h-0.5 bg-gradient-to-r from-transparent via-secondary/40 to-transparent my-2.5"></div>
+<p class="font-body-md text-caption text-on-surface-variant">Optimal plot layout with free unobstructed air corridors on front and rear setbacks.</p>
+</div>
+<!-- Metric Tile 2 -->
+<div class="relative p-space-lg rounded-xl bg-surface-container-lowest shadow-md hover:shadow-2xl transition-all duration-300 border border-secondary/20 flex flex-col items-center text-center group luxury-card-interactive shimmer-surface">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center mb-space-sm text-secondary group-hover:bg-primary-container group-hover:text-secondary-fixed transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[30px] group-hover:scale-110 transition-transform">straighten</span>
+</div>
+<span class="font-stat-value text-stat-value text-on-surface tracking-tight group-hover:text-secondary transition-colors">21 × 60 Ft</span>
+<span class="font-stat-label text-caption uppercase tracking-wider text-secondary font-bold mt-1">Plot Dimensions</span>
+<div class="w-12 h-0.5 bg-gradient-to-r from-transparent via-secondary/40 to-transparent my-2.5"></div>
+<p class="font-body-md text-caption text-on-surface-variant">Grand 21 ft facade with 60 ft depth, allowing tandem multi-car porch and private rear terrace.</p>
+</div>
+<!-- Metric Tile 3 -->
+<div class="relative p-space-lg rounded-xl bg-surface-container-lowest shadow-md hover:shadow-2xl transition-all duration-300 border border-secondary/20 flex flex-col items-center text-center group luxury-card-interactive shimmer-surface">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center mb-space-sm text-secondary group-hover:bg-primary-container group-hover:text-secondary-fixed transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[30px] group-hover:scale-110 transition-transform">apartment</span>
+</div>
+<span class="font-stat-value text-stat-value text-on-surface tracking-tight group-hover:text-secondary transition-colors">2 Storey</span>
+<span class="font-stat-label text-caption uppercase tracking-wider text-secondary font-bold mt-1">Independent Kothi</span>
+<div class="w-12 h-0.5 bg-gradient-to-r from-transparent via-secondary/40 to-transparent my-2.5"></div>
+<p class="font-body-md text-caption text-on-surface-variant">Complete roof ownership rights with heavy-gauge pillar construction ready for 3rd floor vertical expansion.</p>
+</div>
+<!-- Metric Tile 4 -->
+<div class="relative p-space-lg rounded-xl bg-surface-container-lowest shadow-md hover:shadow-2xl transition-all duration-300 border border-secondary/20 flex flex-col items-center text-center group luxury-card-interactive shimmer-surface">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center mb-space-sm text-secondary group-hover:bg-primary-container group-hover:text-secondary-fixed transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[30px] group-hover:scale-110 transition-transform">king_bed</span>
+</div>
+<span class="font-stat-value text-stat-value text-on-surface tracking-tight group-hover:text-secondary transition-colors">4 BHK Suite</span>
+<span class="font-stat-label text-caption uppercase tracking-wider text-secondary font-bold mt-1">4 En-Suite Bathrooms</span>
+<div class="w-12 h-0.5 bg-gradient-to-r from-transparent via-secondary/40 to-transparent my-2.5"></div>
+<p class="font-body-md text-caption text-on-surface-variant">All bedrooms feature custom fitted wardrobes, attached European sanitary baths, and ambient coves.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- INTERACTIVE ROOM-BY-ROOM VILLA GALLERY & FINISH SPECIFICATIONS -->
+<section class="w-full bg-surface py-space-xl lg:py-24 relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-margin relative z-10">
+<div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-gutter mb-space-xl">
+<div class="space-y-space-xs max-w-2xl">
+<span class="font-label-eyebrow text-label-eyebrow uppercase text-secondary font-bold tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">gallery_thumbnail</span>
+            INTERIOR &amp; ARCHITECTURAL EXPLORER
+          </span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold">Exquisite Living In Every Detail</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Step into every curated quadrant of this home — from German-engineered soft-close kitchens to serene marble-lined sanctums.</p>
+</div>
+<!-- Room Selector Tabs (Interactive with vanilla JS) -->
+<div class="flex flex-wrap gap-2 p-1.5 rounded-xl bg-surface-container-high border border-secondary/20 shadow-inner" id="gallery-tabs">
+<button class="active-tab px-4 py-2 rounded-lg font-stat-label text-caption transition-all bg-primary-container text-on-primary shadow-sm font-semibold flex items-center gap-1.5 hover:scale-[1.02]" data-room="kitchen" type="button">
+<span class="material-symbols-outlined text-[16px]">countertops</span> Modern Kitchen
+          </button>
+<button class="px-4 py-2 rounded-lg font-stat-label text-caption transition-all text-on-surface hover:bg-surface-container font-medium flex items-center gap-1.5 hover:scale-[1.02]" data-room="bedroom" type="button">
+<span class="material-symbols-outlined text-[16px]">bed</span> Master Bedroom 1
+          </button>
+<button class="px-4 py-2 rounded-lg font-stat-label text-caption transition-all text-on-surface hover:bg-surface-container font-medium flex items-center gap-1.5 hover:scale-[1.02]" data-room="drawing" type="button">
+<span class="material-symbols-outlined text-[16px]">weekend</span> Media &amp; Living
+          </button>
+<button class="px-4 py-2 rounded-lg font-stat-label text-caption transition-all text-on-surface hover:bg-surface-container font-medium flex items-center gap-1.5 hover:scale-[1.02]" data-room="puja" type="button">
+<span class="material-symbols-outlined text-[16px]">temple_hindu</span> Puja &amp; Balcony
+          </button>
+</div>
+</div>
+<!-- Main Interactive Display Canvas -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter rounded-2xl bg-surface-container-lowest p-space-lg lg:p-space-xl border border-secondary/20 shadow-xl luxury-card-interactive" id="room-canvas">
+<!-- Left Showcase Media -->
+<div class="lg:col-span-7 relative rounded-xl overflow-hidden min-h-[380px] lg:min-h-[460px] bg-primary-container group">
+<img class="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-105" data-alt="Interior luxury architectural view of a modular modern island kitchen with sleek acrylic handle-less cabinets, warm LED under-cabinet strip lighting, polished quartz countertops, built-in chimney, high-end breakfast bar stools, and polished vitrified marble flooring in soft cream hues." id="room-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnYGzi7R0NKMVutoJim5kFkdl6mZse1BBaCk2dPxKbO4DyaXxSAbuZHa78yQs5qmPKtB8wfSAc41wQr8t_wZWC6WKQmHBkAQ4RCi42i6ZuEjXGxQ-qrzv0YeIkNomg-awmeOqym3kmMm1U4HLcyDu7OSQTe0zl7Dklhthn06lVwpSPs7XnvdA30Pnr8mZXiWGoe4S6xPUCyVP2QAR0Aua4uR8XG8W4qkHGNClPH6XvUb1-yvsgSfSX"/>
+<div class="absolute top-4 left-4 bg-primary-container/85 backdrop-blur-md px-3 py-1.5 rounded-full text-secondary-fixed text-caption font-bold flex items-center gap-1.5 border border-secondary/20 shadow-md">
+<span class="material-symbols-outlined text-[16px]">camera</span>
+<span class="" id="room-badge-text">2 Modular Kitchens (Ground + First Floor)</span>
+</div>
+</div>
+<!-- Right Specification Matrix -->
+<div class="lg:col-span-5 flex flex-col justify-between space-y-space-md py-2">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-eyebrow text-caption uppercase text-secondary font-bold tracking-wider" id="room-category">Culinary &amp; Dining Zone</span>
+<span class="px-2.5 py-0.5 rounded bg-secondary-container/40 text-secondary text-caption font-semibold" id="room-tag">Premium Soft-Close Fittings</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold leading-tight" id="room-title">
+              Dual Designer Modular Kitchens
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant" id="room-description">
+              Engineered for seamless entertaining and dual-family autonomy. Features quartz counters, breakfast dining counter, designated pantry organizers, soft-closing Hafele hardware, and built-in exhaust vents.
+            </p>
+</div>
+<!-- Feature Bullet Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm pt-space-xs border-t border-secondary/15" id="room-bullets">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<div>
+<strong class="font-body-md text-caption text-on-surface block font-bold">Quartz Countertops</strong>
+<span class="font-caption text-caption text-on-surface-variant">Stain &amp; heat resistant finish</span>
+</div>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<div>
+<strong class="font-body-md text-caption text-on-surface block font-bold">Dual Storey Setup</strong>
+<span class="font-caption text-caption text-on-surface-variant">Separate ground &amp; upper kitchen</span>
+</div>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<div>
+<strong class="font-body-md text-caption text-on-surface block font-bold">Hafele Soft-Close</strong>
+<span class="font-caption text-caption text-on-surface-variant">Hydraulic drawer systems</span>
+</div>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<div>
+<strong class="font-body-md text-caption text-on-surface block font-bold">Chimney Pipeline</strong>
+<span class="font-caption text-caption text-on-surface-variant">Concealed exhaust ducting</span>
+</div>
+</div>
+</div>
+<!-- Quick Action Buttons -->
+<div class="pt-space-sm flex items-center gap-space-sm">
+<a class="flex-1 py-3 rounded-lg bg-secondary text-on-secondary font-stat-label text-caption font-bold flex items-center justify-center gap-2 hover:bg-secondary-container hover:text-on-secondary-container transition-all shimmer-surface auto-shimmer hover:scale-[1.02] shadow-sm" href="https://wa.me/919592261233?text=Please%20share%20complete%20high-res%20interior%20photos%20of%20Handa%20Properties%20Villa" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">photo_library</span> Request High-Res Photo Pack
+            </a>
+<a class="px-4 py-3 rounded-lg bg-surface-container text-on-surface font-stat-label text-caption font-bold hover:bg-surface-container-high transition-colors flex items-center justify-center hover:scale-105" href="tel:+919592261233">
+<span class="material-symbols-outlined text-[18px] text-secondary">call</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Mini Photo Gallery Strip Underneath (Matching Screenshots) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter mt-space-lg">
+<div class="rounded-xl overflow-hidden bg-surface-container-high border border-secondary/15 group relative luxury-card-interactive">
+<div class="aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Interior luxury bedroom 1 with king-size designer upholstered headboard, warm wooden accent wall slats, recessed soft ceiling LED profiles, and large sliding windows with sheer drapery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbQVDnKZS9MP1oc9OS5eFZpv6y27IM4RCr4RrPhsOeQm5ZAUEZHCeK4jWAj-LyrycEtQ0uXi77VMrJXTLpTrlr6C91hD7niaLXJh3ge5yPWFfd0BIv4c3JZVlCpQFIKAObXVg5OwTUBjivGmpxTvbjStKqdljmW6PeBXfKIqZLdJ-bLtSjVmAge-uUf2U7-IBXEL2juZklMpz-xrofPUVIaXLsOmx5X9x5_8WqbAHYDDm9q2LPjWro"/>
+</div>
+<div class="p-2.5 bg-primary-container text-on-primary text-center">
+<span class="font-stat-label text-[11px] uppercase tracking-wider text-secondary-fixed block font-bold">LUXURIOUS BEDROOM 1</span>
+</div>
+</div>
+<div class="rounded-xl overflow-hidden bg-surface-container-high border border-secondary/15 group relative luxury-card-interactive">
+<div class="aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Contemporary living room with low-profile marble media console, wooden wall paneling, Italian vitrified tile floor, ambient lighting, and modern velvet lounge armchairs." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJcVg6dHl5ajPiHZ-XeFco6vDgiZhpx9EzioB8iicMLcfOla5x4MopdEj7X6cOE63j8AWkCfgpyVht9j8ZgaVTC47UunoSCTAcsCgyCxAH-SKdPWehIu8zLbN-bOU_bmi0IvVXc5qSNk7MGQfC4Nv5T0ECUqb1HqbNSYQSyHGbrNr3bMUqvAZksBfvMKRshbEuKVba2oEtdHIRUdo1i_qy06fRsIXKU1bEko7KjTeL3LmNTPkqK-9O"/>
+</div>
+<div class="p-2.5 bg-primary-container text-on-primary text-center">
+<span class="font-stat-label text-[11px] uppercase tracking-wider text-secondary-fixed block font-bold">STYLISH MEDIA ROOM</span>
+</div>
+</div>
+<div class="rounded-xl overflow-hidden bg-surface-container-high border border-secondary/15 group relative luxury-card-interactive">
+<div class="aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Master bedroom 2 with minimalist built-in wardrobe wardrobes, false ceiling with soft warm perimeter cove illumination, and wooden bedside nightstands." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy3ReH8Z1F7cdgUAkaUUpjcNKkR-TwSqYuHJBlCiLI3yFOIZ8qBc2a6BIyfjZGbGvyCO22y5j8_ChUfnHorAB2_jX3ZbSCAh_7wR-H3lNbymYT7ovEr4ASuOv9-y9A0c_nNzR3_apkPQKYiZIW2xYTHi2rDoDF_HDdpfLmW94oK2pmwA-CAE3Kwv57lOMl-N8ZqN0awlppy9pAKYA740jUkpCkJ0O1veddkPZyWHl4iZEH5Yf2UiPD"/>
+</div>
+<div class="p-2.5 bg-primary-container text-on-primary text-center">
+<span class="font-stat-label text-[11px] uppercase tracking-wider text-secondary-fixed block font-bold">LUXURIOUS BEDROOM 2</span>
+</div>
+</div>
+<div class="rounded-xl overflow-hidden bg-surface-container-high border border-secondary/15 group relative luxury-card-interactive">
+<div class="aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Tranquil dedicated Hindu Puja room with carved marble backdrop, gold-accented bell fixtures, serene warm amber backlit deity alcove, and brass oil lamps." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX6Zigt4scBX40U2k7VuX-ICjdwObA5HuJ6eT2z8SrS6NwfOiF2Glk2vvpFd2WK-C3BlBzArfT_SsN7D5E6T1IAdGJa5i5mVlB8OCp4Vs4WWf4Q-ahgizHepkPRU-u5DJB3AKy82Uc1i1KkS0tDiG1PBwc7Dn3CBnO7cTrdK_tRYHFTPfyO7oYROdGCnKfixYq1SbY_xjtRFkMvNoPr-rjaKn9cmuQH4JuIdUHaIGhdKZP_vaP32q9"/>
+</div>
+<div class="p-2.5 bg-primary-container text-on-primary text-center">
+<span class="font-stat-label text-[11px] uppercase tracking-wider text-secondary-fixed block font-bold">AUSPICIOUS PUJA ROOM</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8 CORE HOUSE FEATURES & VASTU PRINCIPLES MATRIX -->
+<section class="w-full bg-surface-container-low py-space-xl lg:py-24 border-t border-secondary/15 relative">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="flex flex-col items-center text-center max-w-3xl mx-auto mb-space-xl space-y-space-xs">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-eyebrow text-label-eyebrow uppercase font-bold tracking-widest shadow-sm">
+          COMPLETE PROPERTY SPECIFICATIONS
+        </span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold">House Features &amp; Engineering Purity</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Built to surpass municipal benchmarks with high-tensile steel, Grade 53 OPC cement, and 100% Vastu compliance for long-term family harmony.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Feature 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-secondary/20 shadow-sm hover:shadow-xl transition-all flex flex-col items-start gap-space-sm luxury-card-interactive group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high group-hover:bg-secondary/15 transition-colors flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">king_bed</span>
+</div>
+<h3 class="font-headline-sm text-[20px] text-on-surface font-semibold">4 Spacious Bedrooms</h3>
+<p class="font-body-md text-caption text-on-surface-variant">Generously proportioned suites with oversized wardrobe recesses, TV consoles, and private cross-ventilation windows.</p>
+<span class="mt-auto inline-flex items-center gap-1 font-stat-label text-[11px] text-secondary font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">done</span> Ground &amp; Upper Suites
+          </span>
+</div>
+<!-- Feature 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-secondary/20 shadow-sm hover:shadow-xl transition-all flex flex-col items-start gap-space-sm luxury-card-interactive group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high group-hover:bg-secondary/15 transition-colors flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">bathtub</span>
+</div>
+<h3 class="font-headline-sm text-[20px] text-on-surface font-semibold">4 Modern Washrooms</h3>
+<p class="font-body-md text-caption text-on-surface-variant">Designer anti-skid ceramic tiling, concealed diverter systems, wall-hung WC commodes, and vanity mirrors.</p>
+<span class="mt-auto inline-flex items-center gap-1 font-stat-label text-[11px] text-secondary font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">done</span> Premium Chrome Fixtures
+          </span>
+</div>
+<!-- Feature 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-secondary/20 shadow-sm hover:shadow-xl transition-all flex flex-col items-start gap-space-sm luxury-card-interactive group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high group-hover:bg-secondary/15 transition-colors flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">cooking</span>
+</div>
+<h3 class="font-headline-sm text-[20px] text-on-surface font-semibold">2 Modular Kitchens</h3>
+<p class="font-body-md text-caption text-on-surface-variant">Independent kitchens on ground and first floor allowing dual family autonomy or hassle-free guest hosting.</p>
+<span class="mt-auto inline-flex items-center gap-1 font-stat-label text-[11px] text-secondary font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">done</span> Open Concept Dining
+          </span>
+</div>
+<!-- Feature 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-secondary/20 shadow-sm hover:shadow-xl transition-all flex flex-col items-start gap-space-sm luxury-card-interactive group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high group-hover:bg-secondary/15 transition-colors flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">temple_hindu</span>
+</div>
+<h3 class="font-headline-sm text-[20px] text-on-surface font-semibold">1 Dedicated Puja Room</h3>
+<p class="font-body-md text-caption text-on-surface-variant">Consciously aligned in the auspicious Ishanya (North-East) corner for peace, meditative quietude, and prosperity.</p>
+<span class="mt-auto inline-flex items-center gap-1 font-stat-label text-[11px] text-secondary font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">done</span> Ishanya Auspicious Zone
+          </span>
+</div>
+<!-- Feature 5 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-secondary/20 shadow-sm hover:shadow-xl transition-all flex flex-col items-start gap-space-sm luxury-card-interactive group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high group-hover:bg-secondary/15 transition-colors flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">chair</span>
+</div>
+<h3 class="font-headline-sm text-[20px] text-on-surface font-semibold">1 Elegant Drawing Room</h3>
+<p class="font-body-md text-caption text-on-surface-variant">High-ceiling formal reception room greeting guests with cove lighting, expansive glass apertures, and Italian marble flooring.</p>
+<span class="mt-auto inline-flex items-center gap-1 font-stat-label text-[11px] text-secondary font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">done</span> Formal Reception Space
+          </span>
+</div>
+<!-- Feature 6 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-secondary/20 shadow-sm hover:shadow-xl transition-all flex flex-col items-start gap-space-sm luxury-card-interactive group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high group-hover:bg-secondary/15 transition-colors flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">garage</span>
+</div>
+<h3 class="font-headline-sm text-[20px] text-on-surface font-semibold">Covered Car Parking</h3>
+<p class="font-body-md text-caption text-on-surface-variant">Sheltered, secure portico accommodating large SUV with automated wrought-iron gated entry and dedicated EV charging point.</p>
+<span class="mt-auto inline-flex items-center gap-1 font-stat-label text-[11px] text-secondary font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">done</span> SUV Sized Portico
+          </span>
+</div>
+<!-- Feature 7 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-secondary/20 shadow-sm hover:shadow-xl transition-all flex flex-col items-start gap-space-sm luxury-card-interactive group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high group-hover:bg-secondary/15 transition-colors flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">architecture</span>
+</div>
+<h3 class="font-headline-sm text-[20px] text-on-surface font-semibold">Premium Construction</h3>
+<p class="font-body-md text-caption text-on-surface-variant">Seismic-resistant RCC frame, branded copper wiring (Polycab/Havells), weather-shield exterior paint, and UPVC soundproof apertures.</p>
+<span class="mt-auto inline-flex items-center gap-1 font-stat-label text-[11px] text-secondary font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">done</span> Grade 53 Reinforcement
+          </span>
+</div>
+<!-- Feature 8 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-secondary/20 shadow-sm hover:shadow-xl transition-all flex flex-col items-start gap-space-sm luxury-card-interactive group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high group-hover:bg-secondary/15 transition-colors flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">shield_with_heart</span>
+</div>
+<h3 class="font-headline-sm text-[20px] text-on-surface font-semibold">Vastu-Friendly Design</h3>
+<p class="font-body-md text-caption text-on-surface-variant">Engineered under seasoned Vedic Vastu consultation ensuring positive magnetic orientation, kitchen in Agni (SE), and master suite in SW.</p>
+<span class="mt-auto inline-flex items-center gap-1 font-stat-label text-[11px] text-secondary font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">done</span> 100% Certified Geometry
+          </span>
+</div>
+</div>
+<!-- Golden Trust Seal Banner with Dynamic Floating Ember Particles -->
+<div class="mt-space-xl p-space-lg lg:p-space-xl rounded-2xl bg-primary-container text-on-primary border border-secondary/35 relative overflow-hidden shadow-2xl animate-pulse-glow" id="trust-banner-container">
+<!-- Golden Ambient Ember Layer -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none" id="trust-particles-container"></div>
+<div class="absolute -right-10 -bottom-10 w-72 h-72 rounded-full bg-secondary/20 blur-3xl pointer-events-none animate-hero-pulse"></div>
+<div class="absolute -left-10 -top-10 w-72 h-72 rounded-full bg-secondary/10 blur-3xl pointer-events-none"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter items-center text-center relative z-10">
+<div class="flex flex-col items-center group">
+<div class="w-12 h-12 rounded-full bg-secondary/20 group-hover:bg-secondary/35 transition-all flex items-center justify-center text-secondary-fixed mb-2 shadow-inner group-hover:scale-110">
+<span class="material-symbols-outlined text-[28px]">foundation</span>
+</div>
+<strong class="font-headline-sm text-[16px] text-on-primary uppercase tracking-wide">Strong Foundation</strong>
+<span class="font-body-md text-caption text-slate-300">Heavy-gauge deep pillar engineering</span>
+</div>
+<div class="flex flex-col items-center group">
+<div class="w-12 h-12 rounded-full bg-secondary/20 group-hover:bg-secondary/35 transition-all flex items-center justify-center text-secondary-fixed mb-2 shadow-inner group-hover:scale-110">
+<span class="material-symbols-outlined text-[28px]">villa</span>
+</div>
+<strong class="font-headline-sm text-[16px] text-on-primary uppercase tracking-wide">Modern Design</strong>
+<span class="font-body-md text-caption text-slate-300">European arches &amp; stone texture</span>
+</div>
+<div class="flex flex-col items-center group">
+<div class="w-12 h-12 rounded-full bg-secondary/20 group-hover:bg-secondary/35 transition-all flex items-center justify-center text-secondary-fixed mb-2 shadow-inner group-hover:scale-110">
+<span class="material-symbols-outlined text-[28px]">verified</span>
+</div>
+<strong class="font-headline-sm text-[16px] text-on-primary uppercase tracking-wide">Best Quality Material</strong>
+<span class="font-body-md text-caption text-slate-300">Premium brass, glass &amp; teak finish</span>
+</div>
+<div class="flex flex-col items-center group">
+<div class="w-12 h-12 rounded-full bg-secondary/20 group-hover:bg-secondary/35 transition-all flex items-center justify-center text-secondary-fixed mb-2 shadow-inner group-hover:scale-110">
+<span class="material-symbols-outlined text-[28px]">diversity_1</span>
+</div>
+<strong class="font-headline-sm text-[16px] text-on-primary uppercase tracking-wide">Family Friendly</strong>
+<span class="font-body-md text-caption text-slate-300">Child safe &amp; senior citizen accessible</span>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md border-t border-secondary/25 text-center relative z-10">
+<p class="font-headline-md text-headline-md text-secondary-fixed italic font-normal tracking-wide drop-shadow-sm">
+            “Come, See &amp; Fall in Love with Your Future Home!”
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- INTERACTIVE MORTGAGE & EMI CALCULATOR (Real estate bespoke utility) -->
+<section class="w-full bg-surface py-space-xl lg:py-24">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-5 space-y-space-md">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-secondary/20 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">calculate</span>
+<span class="font-label-eyebrow text-caption uppercase text-secondary font-bold">FINANCIAL ADVISORY SUITE</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold">Tailored EMI &amp; Home Loan Planner</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Handa Properties partners with leading banks (SBI, HDFC, ICICI, Axis Bank) to provide smooth, pre-approved loan sanctions up to 85% of property value with competitive interest rates.
+          </p>
+<div class="p-space-md rounded-xl bg-surface-container-low border border-secondary/15 flex flex-col gap-2 luxury-card-interactive">
+<div class="flex items-center gap-2 font-body-md text-body-md text-on-surface font-semibold">
+<span class="material-symbols-outlined text-secondary">approval</span>
+<span class="">100% Registry &amp; Mutation Clear Title</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">No hidden developmental charges. Transparent paperwork assisted directly by Kulwinder Singh.</p>
+</div>
+</div>
+<!-- Calculator Interactive Widget -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-space-lg lg:p-space-xl rounded-2xl shadow-xl border border-secondary/20 luxury-card-interactive">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Left Controls -->
+<div class="space-y-space-md">
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<label class="font-stat-label text-caption uppercase text-on-surface font-bold">Estimated Loan Amount</label>
+<span class="font-stat-label text-caption font-bold text-secondary" id="loan-amt-label">₹ 75.00 Lakhs</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-secondary transition-all" id="loan-amount" max="15000000" min="3000000" step="250000" type="range" value="7500000"/>
+<div class="flex justify-between text-[11px] text-on-surface-variant mt-1">
+<span class="">₹ 30 Lakhs</span>
+<span class="">₹ 1.50 Crore</span>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<label class="font-stat-label text-caption uppercase text-on-surface font-bold">Loan Tenure</label>
+<span class="font-stat-label text-caption font-bold text-secondary" id="tenure-label">20 Years</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-secondary transition-all" id="loan-tenure" max="30" min="5" step="1" type="range" value="20"/>
+<div class="flex justify-between text-[11px] text-on-surface-variant mt-1">
+<span class="">5 Yrs</span>
+<span class="">30 Yrs</span>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<label class="font-stat-label text-caption uppercase text-on-surface font-bold">Interest Rate (% P.A.)</label>
+<span class="font-stat-label text-caption font-bold text-secondary" id="rate-label">8.50 %</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-secondary transition-all" id="loan-rate" max="12.0" min="7.0" step="0.1" type="range" value="8.5"/>
+<div class="flex justify-between text-[11px] text-on-surface-variant mt-1">
+<span class="">7.0%</span>
+<span class="">12.0%</span>
+</div>
+</div>
+</div>
+<!-- Right Computed Output Card -->
+<div class="p-space-lg rounded-xl bg-primary-container text-on-primary flex flex-col justify-between border border-secondary/30 relative overflow-hidden shadow-lg">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 bg-secondary/15 rounded-full blur-xl pointer-events-none"></div>
+<div class="relative z-10">
+<span class="font-label-eyebrow text-caption uppercase text-secondary-fixed tracking-widest block font-bold">ESTIMATED MONTHLY INSTALLMENT</span>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-headline-sm text-secondary-fixed">₹</span>
+<span class="font-stat-value text-[38px] text-secondary-fixed font-bold tracking-tight" id="emi-amount">65,087</span>
+<span class="text-caption text-slate-300">/ month</span>
+</div>
+<p class="font-caption text-[12px] text-slate-300 mt-2">Principal repayment and estimated reducing interest based on current benchmark rates.</p>
+</div>
+<div class="pt-space-md border-t border-secondary/20 space-y-2 text-caption relative z-10">
+<div class="flex justify-between">
+<span class="text-slate-300">Total Interest Payable</span>
+<span class="font-bold text-on-primary" id="total-interest">₹ 81,20,818</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-300">Total Payment (P + I)</span>
+<span class="font-bold text-on-primary" id="total-payment">₹ 1,56,20,818</span>
+</div>
+</div>
+<a class="mt-space-md w-full py-2.5 rounded-lg bg-secondary text-on-secondary text-caption font-bold text-center hover:bg-secondary-container hover:text-on-secondary-container transition-all relative z-10 shadow-sm shimmer-surface auto-shimmer" href="#booking-section">
+                Request Bank Loan Assistance
+              </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- STRATEGIC LOCATION ADVANTAGES & CONNECTIVITY -->
+<section class="w-full bg-surface-container-low py-space-xl border-t border-secondary/15">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="text-center max-w-2xl mx-auto mb-space-xl space-y-space-xs">
+<span class="font-label-eyebrow text-label-eyebrow uppercase text-secondary font-bold tracking-widest">CONNECTIVITY &amp; NEIGHBORHOOD</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold">Prime Location With Easy Transit</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Situated in an elite residential belt surrounded by top-tier educational institutions, multi-specialty hospitals, and high-street shopping avenues.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Connectivity Distance Cards -->
+<div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-secondary/20 flex items-start gap-space-sm luxury-card-interactive group">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high group-hover:bg-secondary/15 transition-colors flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">add_road</span>
+</div>
+<div>
+<strong class="font-body-md text-body-md text-on-surface font-semibold block">National Highway Access</strong>
+<span class="font-stat-label text-caption text-secondary font-bold block">3 Minutes Drive</span>
+<span class="font-caption text-caption text-on-surface-variant">Direct signal-free connectivity to major urban transit nodes.</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-secondary/20 flex items-start gap-space-sm luxury-card-interactive group">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high group-hover:bg-secondary/15 transition-colors flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">school</span>
+</div>
+<div>
+<strong class="font-body-md text-body-md text-on-surface font-semibold block">Top Tier K-12 Schools</strong>
+<span class="font-stat-label text-caption text-secondary font-bold block">5 - 7 Minutes</span>
+<span class="font-caption text-caption text-on-surface-variant">Reputed CBSE and Cambridge accredited institutions nearby.</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-secondary/20 flex items-start gap-space-sm luxury-card-interactive group">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high group-hover:bg-secondary/15 transition-colors flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">local_hospital</span>
+</div>
+<div>
+<strong class="font-body-md text-body-md text-on-surface font-semibold block">Multi-Specialty Care</strong>
+<span class="font-stat-label text-caption text-secondary font-bold block">6 Minutes Away</span>
+<span class="font-caption text-caption text-on-surface-variant">24/7 emergency care, specialty hospitals &amp; diagnostic facilities.</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest border border-secondary/20 flex items-start gap-space-sm luxury-card-interactive group">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high group-hover:bg-secondary/15 transition-colors flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">shopping_bag</span>
+</div>
+<div>
+<strong class="font-body-md text-body-md text-on-surface font-semibold block">Commercial Markets</strong>
+<span class="font-stat-label text-caption text-secondary font-bold block">4 Minutes Distance</span>
+<span class="font-caption text-caption text-on-surface-variant">Multiplexes, international dining, supermarkets and banks.</span>
+</div>
+</div>
+<div class="sm:col-span-2 p-space-md rounded-xl bg-surface-container-lowest border border-secondary/20 flex items-center justify-between luxury-card-interactive">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[24px]">flight_takeoff</span>
+<div>
+<span class="font-body-md text-body-md text-on-surface font-semibold block">International Airport Corridor</span>
+<span class="font-caption text-caption text-on-surface-variant">Direct highway arterial drive • 25-30 Mins</span>
+</div>
+</div>
+<span class="px-3 py-1 rounded bg-surface-container font-stat-label text-caption text-secondary font-bold">Fast Route</span>
+</div>
+</div>
+<!-- Static Map Visual Container -->
+<div class="lg:col-span-5 rounded-xl overflow-hidden shadow-md border border-secondary/20 relative min-h-[300px] luxury-card-interactive">
+<div class="w-full h-full min-h-[300px] bg-cover bg-center transition-transform duration-700 hover:scale-105" data-location="Model Town, Jalandhar, Punjab, India" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAaBP2AdTmuLxiLjD8LLf7tkI30dQlcvgeMIET85XEyY-HbveecYo7pwZ__m9EAExGADtXELAkwTf2d_2u47ShpdJkTC73pzZrYABtIQH8R8VDe5G044Cz-vIl8pFjyXy4ip97Jaf4v5yiNxndP7RLZhAOnWJnq6-6VlBVO1DH2XTA5HVcoTeOZ2pWdgtS_dzzS2lLie6KB86Un-KslfEvCub0Dpe2Ng6BDrjzeY5U_hQnbxq3-u2Tx')"></div>
+<div class="absolute bottom-4 inset-x-4 bg-primary-container/90 backdrop-blur-md p-space-sm rounded-lg text-on-primary border border-secondary/20 flex items-center justify-between shadow-lg">
+<div>
+<span class="font-stat-label text-caption text-secondary-fixed block font-bold">Handa Properties Villa Site</span>
+<span class="font-caption text-[11px] text-slate-300">Posh residential sector with wide 40ft municipal roads</span>
+</div>
+<a class="px-3 py-1 rounded bg-secondary text-on-secondary font-stat-label text-[11px] font-bold hover:bg-secondary-container hover:text-on-secondary-container transition-colors shadow-xs" href="https://maps.google.com" rel="noopener noreferrer" target="_blank">
+              Directions
+            </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- DIRECT VIP BOOKING & KULWINDER SINGH CONSULTATION DESK (With golden ember particles) -->
+<section class="w-full bg-surface py-space-xl lg:py-24" id="booking-section">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="rounded-3xl bg-surface-container-lowest border border-secondary/25 shadow-2xl overflow-hidden luxury-card-interactive">
+<div class="grid grid-cols-1 lg:grid-cols-12">
+<!-- Left Executive Contact Information Card (Kulwinder Singh) with Particle Canvas -->
+<div class="lg:col-span-5 bg-primary-container text-on-primary p-space-lg lg:p-space-xl flex flex-col justify-between relative overflow-hidden" id="vip-card-container">
+<!-- Floating golden ember sparks layer -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none" id="vip-particles-container"></div>
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl pointer-events-none animate-hero-pulse"></div>
+<div class="space-y-space-md relative z-10">
+<div class="space-y-1">
+<span class="font-label-eyebrow text-caption uppercase text-secondary-fixed tracking-widest font-bold block">FOR MORE DETAILS CONTACT</span>
+<h2 class="font-headline-lg text-headline-lg text-on-primary font-semibold">Kulwinder Singh</h2>
+<p class="font-body-md text-caption text-slate-300">Lead Architectural Advisor &amp; Property Specialist at Handa Properties</p>
+</div>
+<!-- Direct Call Phone Numbers -->
+<div class="space-y-space-sm pt-2">
+<a class="p-space-md rounded-xl bg-white/5 hover:bg-white/10 border border-secondary/20 flex items-center gap-space-sm transition-all group hover:scale-[1.02] shadow-sm" href="tel:+919592261233">
+<div class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-md">
+<span class="material-symbols-outlined text-[24px]">call</span>
+</div>
+<div>
+<span class="font-label-eyebrow text-[11px] uppercase text-secondary-fixed block">Primary Hotline</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-primary tracking-wide">9592261233</span>
+</div>
+</a>
+<a class="p-space-md rounded-xl bg-white/5 hover:bg-white/10 border border-secondary/20 flex items-center gap-space-sm transition-all group hover:scale-[1.02] shadow-sm" href="tel:+919855055716">
+<div class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-md">
+<span class="material-symbols-outlined text-[24px]">call</span>
+</div>
+<div>
+<span class="font-label-eyebrow text-[11px] uppercase text-secondary-fixed block">Direct Line</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-primary tracking-wide">9855055716</span>
+</div>
+</a>
+</div>
+<!-- Instant WhatsApp Direct Trigger with Breathing Ring -->
+<a class="w-full py-3.5 px-space-md rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-stat-label text-stat-label font-bold flex items-center justify-center gap-2 shadow-lg transition-all animate-breathing-ring hover:scale-[1.02] active:scale-[0.98] shimmer-surface auto-shimmer" href="https://wa.me/919592261233?text=Hi%20Kulwinder%20Singh,%20I%20would%20like%20to%20schedule%20a%20site%20visit%20for%20the%20180%20Gaj%20Independent%20House" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[22px]">chat</span>
+<span class="">Instant WhatsApp Inquiry (+91 9592261233)</span>
+</a>
+</div>
+<!-- Trust Badge Stamp -->
+<div class="pt-space-lg mt-space-lg border-t border-secondary/20 flex items-center justify-between text-caption text-slate-400 relative z-10">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-secondary">verified</span> Guaranteed Clear Title</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-secondary">handshake</span> Direct Owner Dealing</span>
+</div>
+</div>
+<!-- Right Booking & Tour Form -->
+<div class="lg:col-span-7 p-space-lg lg:p-space-xl flex flex-col justify-center relative">
+<div class="mb-space-md space-y-1">
+<span class="font-label-eyebrow text-caption uppercase text-secondary font-bold tracking-widest">SCHEDULE AN IN-PERSON WALKTHROUGH</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Book A Private Site Visit</h3>
+<p class="font-body-md text-caption text-on-surface-variant">Select your preferred date and time. Our senior consultant will personally walk you through every corner of the villa.</p>
+</div>
+<form class="space-y-space-md" id="visit-form">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-eyebrow text-caption uppercase text-on-surface-variant font-bold" for="visitor-name">Your Full Name *</label>
+<input class="w-full px-4 py-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant/50 focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary/40 focus:shadow-md transition-all" id="visitor-name" placeholder="e.g. Gurpreet Singh" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-eyebrow text-caption uppercase text-on-surface-variant font-bold" for="visitor-phone">Mobile Phone Number *</label>
+<input class="w-full px-4 py-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant/50 focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary/40 focus:shadow-md transition-all" id="visitor-phone" placeholder="e.g. +91 98765 43210" required="" type="tel"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-eyebrow text-caption uppercase text-on-surface-variant font-bold" for="visit-date">Preferred Visit Date *</label>
+<input class="w-full px-4 py-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary/40 focus:shadow-md transition-all cursor-pointer" id="visit-date" required="" type="date"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-eyebrow text-caption uppercase text-on-surface-variant font-bold" for="visit-slot">Preferred Time Slot *</label>
+<select class="w-full px-4 py-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary/40 focus:shadow-md transition-all cursor-pointer" id="visit-slot">
+<option value="Morning (10:00 AM - 12:30 PM)">Morning (10:00 AM - 12:30 PM)</option>
+<option value="Afternoon (1:00 PM - 4:00 PM)">Afternoon (1:00 PM - 4:00 PM)</option>
+<option selected="" value="Golden Hour / Evening (4:30 PM - 7:00 PM)">Golden Hour / Evening (4:30 PM - 7:00 PM)</option>
+<option value="VIP Night Lighting Experience (7:00 PM - 8:30 PM)">VIP Night Lighting Experience (7:00 PM - 8:30 PM)</option>
+</select>
+</div>
+</div>
+<!-- Key Areas of Interest Pill Checkboxes -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-eyebrow text-caption uppercase text-on-surface-variant font-bold">Key Focus Areas For Your Tour</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-caption font-body-md" id="focus-interest-group">
+<label class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container border border-secondary/15 cursor-pointer transition-colors has-[:checked]:bg-secondary/10 has-[:checked]:border-secondary">
+<input checked="" class="rounded border-secondary/40 text-secondary focus:ring-secondary/40 w-4 h-4" name="focus-interest" type="checkbox" value="180 Gaj Layout &amp; Structure"/>
+<span class="text-on-surface font-medium">180 Gaj Layout &amp; Structure</span>
+</label>
+<label class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container border border-secondary/15 cursor-pointer transition-colors has-[:checked]:bg-secondary/10 has-[:checked]:border-secondary">
+<input checked="" class="rounded border-secondary/40 text-secondary focus:ring-secondary/40 w-4 h-4" name="focus-interest" type="checkbox" value="Vastu &amp; Vedic Direction"/>
+<span class="text-on-surface font-medium">Vastu &amp; Vedic Direction</span>
+</label>
+<label class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container border border-secondary/15 cursor-pointer transition-colors has-[:checked]:bg-secondary/10 has-[:checked]:border-secondary">
+<input class="rounded border-secondary/40 text-secondary focus:ring-secondary/40 w-4 h-4" name="focus-interest" type="checkbox" value="Bank Loan &amp; EMI Assistance"/>
+<span class="text-on-surface font-medium">Bank Loan &amp; EMI Assistance</span>
+</label>
+<label class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container border border-secondary/15 cursor-pointer transition-colors has-[:checked]:bg-secondary/10 has-[:checked]:border-secondary">
+<input class="rounded border-secondary/40 text-secondary focus:ring-secondary/40 w-4 h-4" name="focus-interest" type="checkbox" value="Interior Modular Kitchens &amp; Wardrobes"/>
+<span class="text-on-surface font-medium">Kitchens &amp; Wardrobes</span>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-eyebrow text-caption uppercase text-on-surface-variant font-bold" for="visit-notes">Special Inquiries or Questions</label>
+<textarea class="w-full px-4 py-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant/50 focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary/40 focus:shadow-md transition-all" id="visit-notes" placeholder="Let us know if you need assistance with home loan processing, Vastu alignment details, immediate registry token booking..." rows="3"></textarea>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pt-2 gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">lock</span>
+<span class="font-caption text-caption text-on-surface-variant">Direct confidential channel to Kulwinder Singh.</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-4 py-3 rounded-lg border border-secondary/30 bg-surface-container-low hover:bg-surface-container text-on-surface font-stat-label text-caption font-bold transition-all flex items-center gap-1.5 hover:scale-[1.02]" id="preview-msg-btn" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">visibility</span>
+<span>Preview Message</span>
+</button>
+<button class="px-space-lg py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-stat-label text-stat-label font-bold transition-all shadow-md flex items-center justify-center gap-2 group animate-breathing-ring hover:scale-[1.02] active:scale-[0.98] shimmer-surface auto-shimmer" id="submit-booking-btn" type="submit">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span>Book via WhatsApp</span>
+<span class="material-symbols-outlined text-[18px] text-emerald-200 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MODAL: ROYAL WHATSAPP MESSAGE REVIEW & DISPATCH MODAL -->
+<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-primary-container/70 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300" id="whatsapp-preview-modal" role="dialog">
+<div class="relative w-full max-w-lg rounded-2xl bg-surface-container-lowest border-2 border-secondary/30 shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300" id="whatsapp-preview-card">
+<!-- Header -->
+<div class="bg-primary-container text-on-primary px-6 py-4 flex items-center justify-between border-b border-secondary/20">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-[17px] font-semibold text-on-primary leading-tight" id="modal-title">VIP WhatsApp Itinerary</h4>
+<span class="font-caption text-[11px] text-secondary-fixed">Handa Properties • Kulwinder Singh</span>
+</div>
+</div>
+<button aria-label="Close Preview" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-on-primary flex items-center justify-center transition-colors" id="close-preview-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Body / Chat Simulation -->
+<div class="p-6 bg-surface-container-low space-y-4">
+<div class="flex items-center justify-between text-caption text-on-surface-variant border-b border-secondary/15 pb-2">
+<span class="font-stat-label uppercase tracking-wider text-[11px] font-bold text-secondary">Formatted Concierge Message</span>
+<span class="text-[11px] flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> Live Preview</span>
+</div>
+<!-- WhatsApp message bubble mockup -->
+<div class="p-4 rounded-xl rounded-tl-sm bg-[#e7fedb] border border-emerald-200 text-[#111b21] shadow-sm font-body-md text-caption leading-relaxed whitespace-pre-wrap selection:bg-emerald-300" id="preview-message-content">
+</div>
+<div class="p-3 rounded-lg bg-surface-container-high border border-secondary/15 flex items-center justify-between gap-3 text-caption">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[18px]">contact_phone</span>
+<span>Recipient: <strong>+91 9592261233</strong> (Kulwinder Singh)</span>
+</div>
+<span class="text-secondary font-bold text-[11px] uppercase tracking-wider">Direct Desk</span>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="bg-surface-container-lowest px-6 py-4 border-t border-secondary/15 flex flex-wrap items-center justify-between gap-3">
+<button class="px-4 py-2.5 rounded-lg border border-secondary/30 bg-surface text-on-surface hover:bg-surface-container font-stat-label text-caption font-bold transition-all" id="edit-details-btn" type="button">
+        Modify Details
+      </button>
+<div class="flex items-center gap-2">
+<a class="px-3 py-2 rounded-lg bg-surface-container text-on-surface hover:bg-secondary hover:text-on-secondary text-caption font-bold flex items-center gap-1 transition-all" href="tel:+919855055716" title="Secondary Line">
+<span class="material-symbols-outlined text-[15px]">call</span> Alt Line
+        </a>
+<button class="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-stat-label text-caption font-bold shadow-md transition-all flex items-center gap-2 animate-breathing-ring" id="dispatch-whatsapp-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>Open in WhatsApp</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- TOAST NOTIFICATION -->
+<div class="fixed top-24 right-6 z-50 max-w-sm rounded-xl bg-primary-container text-on-primary border border-secondary/40 shadow-2xl p-4 transform translate-y-[-20px] opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3" id="dispatch-toast">
+<div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+</div>
+<div class="space-y-0.5">
+<strong class="font-headline-sm text-[15px] font-semibold text-on-primary block leading-tight">Opening WhatsApp...</strong>
+<p class="font-body-md text-caption text-slate-300">Your personalized VIP visit itinerary has been dispatched to Kulwinder Singh.</p>
+</div>
+</div>
+<!-- JAVASCRIPT: Interactive Room Explorer & EMI Math Logic & Private Visit Booking + Dynamic Particles Generator -->
+<script>
+    (function initVillaExperience() {
+      // 1. Dynamic Golden Ember Sparks Generator
+      function spawnAmbientSparks(containerId, count) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        for (let i = 0; i < count; i++) {
+          const spark = document.createElement('div');
+          spark.className = 'golden-ember';
+          const size = Math.random() * 4 + 2; // 2px to 6px
+          const left = Math.random() * 100;
+          const duration = Math.random() * 7 + 5; // 5s to 12s
+          const delay = Math.random() * 6; // 0s to 6s
+          spark.style.width = size + 'px';
+          spark.style.height = size + 'px';
+          spark.style.left = left + '%';
+          spark.style.animationDuration = duration + 's';
+          spark.style.animationDelay = delay + 's';
+          spark.style.opacity = (Math.random() * 0.7 + 0.3).toString();
+          container.appendChild(spark);
+        }
+      }
+
+      spawnAmbientSparks('trust-particles-container', 22);
+      spawnAmbientSparks('vip-particles-container', 18);
+      spawnAmbientSparks('hero-particles-container', 14);
+
+      // Room Tab Data
+      const roomData = {
+        kitchen: {
+          category: 'Culinary & Dining Zone',
+          tag: 'Hafele Soft-Close Fittings',
+          title: 'Dual Designer Modular Kitchens',
+          desc: 'Engineered for seamless entertaining and dual-family autonomy. Features quartz counters, breakfast dining counter, designated pantry organizers, soft-closing Hafele hardware, and built-in exhaust vents.',
+          badge: '2 Modular Kitchens (Ground + First Floor)',
+          bullets: [
+            { title: 'Quartz Countertops', sub: 'Stain & heat resistant finish' },
+            { title: 'Dual Storey Setup', sub: 'Separate ground & upper kitchen' },
+            { title: 'Hafele Soft-Close', sub: 'Hydraulic drawer systems' },
+            { title: 'Chimney Pipeline', sub: 'Concealed exhaust ducting' }
+          ]
+        },
+        bedroom: {
+          category: 'Private Quarters',
+          tag: 'Vastu Aligned Master Suite',
+          title: 'Luxurious Master Bedrooms',
+          desc: 'South-West positioned for optimal family vitality. Complete with floor-to-ceiling customized wardrobes, integrated study niches, and private attached washrooms with Italian shower enclosures.',
+          badge: '4 En-Suite Bedrooms with Dressing',
+          bullets: [
+            { title: 'Italian Marble Accents', sub: 'Polished vitrified flooring' },
+            { title: 'Attached Designer Bath', sub: 'European wall-hung fixtures' },
+            { title: 'Acoustic UPVC Glass', sub: 'Double glazed thermal noise buffer' },
+            { title: 'Ambient Cove Lights', sub: 'Warm low-glare ceiling coffers' }
+          ]
+        },
+        drawing: {
+          category: 'Formal Reception & Entertainment',
+          tag: 'Double Height Spatial Volume',
+          title: 'Stylish Media & Drawing Room',
+          desc: 'An inspiring reception arena with custom fluted timber wall panels, integrated concealed television cabling, and soaring vertical ceiling clearance welcoming daylight throughout the day.',
+          badge: 'Formal Guest Living & Lounge',
+          bullets: [
+            { title: 'Fluted Wall Panels', sub: 'Bespoke architectural accents' },
+            { title: 'High Ceilings', sub: '11-foot clear height elevation' },
+            { title: 'Cross-Ventilation', sub: 'North-East garden facing openings' },
+            { title: 'Smart Lighting Ready', sub: 'Automation conduit pre-installed' }
+          ]
+        },
+        puja: {
+          category: 'Auspicious Energy Sanctuary',
+          tag: '100% Vastu Ishanya Placement',
+          title: 'Dedicated Puja Room & Balconies',
+          desc: 'Placed in the pristine North-East quadrant with white marble backdrop, sacred geometry lighting, and panoramic balconies overlooking the quiet green neighborhood avenue.',
+          badge: 'North-East Vedic Alignment',
+          bullets: [
+            { title: 'Vedic Orientation', sub: 'Harmonious positive vibrations' },
+            { title: 'Carved Backlit Altar', sub: 'Integrated soft brass illumination' },
+            { title: 'Spacious Balconies', sub: 'European balustrade railings' },
+            { title: 'Morning Sunlight', sub: 'Direct East dawn light penetration' }
+          ]
+        }
+      };
+
+      // Room Explorer Tab Click Handlers
+      const tabButtons = document.querySelectorAll('#gallery-tabs button');
+      const catElem = document.getElementById('room-category');
+      const tagElem = document.getElementById('room-tag');
+      const titleElem = document.getElementById('room-title');
+      const descElem = document.getElementById('room-description');
+      const badgeElem = document.getElementById('room-badge-text');
+      const bulletContainer = document.getElementById('room-bullets');
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', function () {
+          const roomKey = this.dataset.room;
+          const data = roomData[roomKey];
+          if (!data) return;
+
+          tabButtons.forEach(b => {
+            b.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm', 'font-semibold');
+            b.classList.add('text-on-surface', 'hover:bg-surface-container', 'font-medium');
+          });
+
+          this.classList.remove('text-on-surface', 'hover:bg-surface-container', 'font-medium');
+          this.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm', 'font-semibold');
+
+          if (catElem) catElem.textContent = data.category;
+          if (tagElem) tagElem.textContent = data.tag;
+          if (titleElem) titleElem.textContent = data.title;
+          if (descElem) descElem.textContent = data.desc;
+          if (badgeElem) badgeElem.textContent = data.badge;
+
+          if (bulletContainer) {
+            bulletContainer.innerHTML = data.bullets.map(b => `
+              <div class="flex items-start gap-2">
+                <span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                <div>
+                  <strong class="font-body-md text-caption text-on-surface block font-bold">${b.title}</strong>
+                  <span class="font-caption text-caption text-on-surface-variant">${b.sub}</span>
+                </div>
+              </div>
+            `).join('');
+          }
+        });
+      });
+
+      // EMI Calculator Math
+      const loanAmountInput = document.getElementById('loan-amount');
+      const tenureInput = document.getElementById('loan-tenure');
+      const rateInput = document.getElementById('loan-rate');
+
+      const loanAmtLabel = document.getElementById('loan-amt-label');
+      const tenureLabel = document.getElementById('tenure-label');
+      const rateLabel = document.getElementById('rate-label');
+
+      const emiAmount = document.getElementById('emi-amount');
+      const totalInterest = document.getElementById('total-interest');
+      const totalPayment = document.getElementById('total-payment');
+
+      function calculateEMI() {
+        if (!loanAmountInput || !tenureInput || !rateInput) return;
+        const P = parseFloat(loanAmountInput.value);
+        const N = parseFloat(tenureInput.value) * 12;
+        const R = parseFloat(rateInput.value) / 12 / 100;
+
+        if (loanAmtLabel) loanAmtLabel.textContent = '₹ ' + (P >= 10000000 ? (P / 10000000).toFixed(2) + ' Cr' : (P / 100000).toFixed(2) + ' Lakhs');
+        if (tenureLabel) tenureLabel.textContent = tenureInput.value + ' Years';
+        if (rateLabel) rateLabel.textContent = parseFloat(rateInput.value).toFixed(2) + ' %';
+
+        const emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+        const totalPay = emi * N;
+        const totalInt = totalPay - P;
+
+        if (emiAmount) emiAmount.textContent = Math.round(emi).toLocaleString('en-IN');
+        if (totalInterest) totalInterest.textContent = '₹ ' + Math.round(totalInt).toLocaleString('en-IN');
+        if (totalPayment) totalPayment.textContent = '₹ ' + Math.round(totalPay).toLocaleString('en-IN');
+      }
+
+      if (loanAmountInput && tenureInput && rateInput) {
+        loanAmountInput.addEventListener('input', calculateEMI);
+        tenureInput.addEventListener('input', calculateEMI);
+        rateInput.addEventListener('input', calculateEMI);
+        calculateEMI();
+      }
+
+      // Default Date Helper: Set min date to today, default to tomorrow
+      const visitDateInput = document.getElementById('visit-date');
+      if (visitDateInput) {
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const yyyy = tomorrow.getFullYear();
+        const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const dd = String(tomorrow.getDate()).padStart(2, '0');
+        const minStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+        visitDateInput.min = minStr;
+        visitDateInput.value = `${yyyy}-${mm}-${dd}`;
+      }
+
+      // Format custom WhatsApp text dynamically
+      function generateCustomMessage() {
+        const name = (document.getElementById('visitor-name')?.value || '').trim() || 'Valued Buyer';
+        const phone = (document.getElementById('visitor-phone')?.value || '').trim() || 'Not provided';
+        const rawDate = document.getElementById('visit-date')?.value || '';
+        let formattedDate = rawDate;
+        if (rawDate) {
+          try {
+            const d = new Date(rawDate);
+            formattedDate = d.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+          } catch(e) {}
+        }
+        const slot = document.getElementById('visit-slot')?.value || 'Golden Hour / Evening (4:30 PM - 7:00 PM)';
+        
+        // Collect checked focus areas
+        const checkedInterests = Array.from(document.querySelectorAll('input[name="focus-interest"]:checked'))
+          .map(cb => cb.value);
+        const interestsStr = checkedInterests.length > 0 ? checkedInterests.join(', ') : 'Complete 180 Gaj Villa Walkthrough';
+
+        const notes = (document.getElementById('visit-notes')?.value || '').trim();
+
+        let message = `Namaste Kulwinder Singh Ji (Handa Properties),\n\n`;
+        message += `I would like to schedule a private site walkthrough for the 180 Gaj 2-Storey Luxury Villa.\n\n`;
+        message += `• Name: ${name}\n`;
+        message += `• Phone: ${phone}\n`;
+        message += `• Preferred Date: ${formattedDate || 'Upcoming available day'}\n`;
+        message += `• Preferred Slot: ${slot}\n`;
+        message += `• Key Interests: ${interestsStr}\n`;
+        if (notes) {
+          message += `• Note/Query: ${notes}\n`;
+        }
+        message += `\nPlease confirm availability and share the exact location pin. Thank you!`;
+        return message;
+      }
+
+      // Modal & Toast Controls
+      const modal = document.getElementById('whatsapp-preview-modal');
+      const modalCard = document.getElementById('whatsapp-preview-card');
+      const modalContent = document.getElementById('preview-message-content');
+      const closeBtn = document.getElementById('close-preview-btn');
+      const editBtn = document.getElementById('edit-details-btn');
+      const previewBtn = document.getElementById('preview-msg-btn');
+      const dispatchBtn = document.getElementById('dispatch-whatsapp-btn');
+      const visitForm = document.getElementById('visit-form');
+      const toast = document.getElementById('dispatch-toast');
+
+      function openModal() {
+        if (!modal || !modalContent) return;
+        const msg = generateCustomMessage();
+        modalContent.textContent = msg;
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modalCard?.classList.remove('scale-95');
+        modalCard?.classList.add('scale-100');
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        modalCard?.classList.add('scale-95');
+        modalCard?.classList.remove('scale-100');
+      }
+
+      function triggerWhatsAppDispatch() {
+        const msg = generateCustomMessage();
+        const targetPhone = '919592261233';
+        const url = 'https://api.whatsapp.com/send?phone=' + targetPhone + '&text=' + encodeURIComponent(msg);
+
+        // Show Toast
+        if (toast) {
+          toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-[-20px]');
+          toast.classList.add('opacity-100', 'translate-y-0');
+          setTimeout(() => {
+            toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[-20px]');
+            toast.classList.remove('opacity-100', 'translate-y-0');
+          }, 4500);
+        }
+
+        // Open in new tab/app window
+        window.open(url, '_blank');
+        closeModal();
+      }
+
+      if (previewBtn) {
+        previewBtn.addEventListener('click', openModal);
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (editBtn) editBtn.addEventListener('click', closeModal);
+
+      // Close modal on click outside card
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+      }
+
+      if (dispatchBtn) {
+        dispatchBtn.addEventListener('click', triggerWhatsAppDispatch);
+      }
+
+      if (visitForm) {
+        visitForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          openModal();
+        });
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_12px_rgba(0,0,0,0.03)]"><div class="max-w-7xl mx-auto px-margin pt-space-xl pb-space-lg"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter pb-space-xl"><div class="flex flex-col gap-space-md lg:col-span-5"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-secondary text-[20px]">villa</span></div><div><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface leading-none block">Handa Properties</span><span class="font-label-eyebrow text-caption uppercase text-secondary tracking-widest mt-1 block">Your Trusted Property Partner</span></div></div><p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Crafting iconic independent villas and opulent estates built on unwavering trust, architectural precision, and harmonic Vastu living.</p><div class="flex items-center gap-space-sm pt-space-xs"><div class="flex items-center gap-1.5 px-space-sm py-1 rounded bg-surface-container text-on-surface font-stat-label text-caption"><span class="material-symbols-outlined text-[15px] text-secondary">verified</span><span class="">RERA Registered</span></div><div class="flex items-center gap-1.5 px-space-sm py-1 rounded bg-surface-container text-on-surface font-stat-label text-caption"><span class="material-symbols-outlined text-[15px] text-secondary">shield</span><span class="">100% Vastu Certified</span></div></div></div><div class="flex flex-col gap-space-sm lg:col-span-4"><span class="font-label-eyebrow text-label-eyebrow uppercase text-secondary tracking-wider">Direct Contact</span><div class="flex flex-col gap-space-xs mt-1"><div class="flex items-start gap-space-xs text-on-surface font-body-md text-body-md"><span class="material-symbols-outlined text-[18px] text-secondary mt-0.5">person_pin</span><div><span class="font-medium block">Kulwinder Singh</span><span class="text-caption text-on-surface-variant block">Lead Property Consultant</span></div></div><a class="flex items-center gap-space-xs text-on-surface font-body-md text-body-md hover:text-secondary transition-colors" href="tel:+919592261233"><span class="material-symbols-outlined text-[18px] text-secondary">call</span><span class="">+91 9592261233</span></a><a class="flex items-center gap-space-xs text-on-surface font-body-md text-body-md hover:text-secondary transition-colors" href="tel:+919855055716"><span class="material-symbols-outlined text-[18px] text-secondary">call</span><span class="">+91 9855055716</span></a><div class="flex items-center gap-space-xs text-on-surface-variant font-body-md text-caption mt-1"><span class="material-symbols-outlined text-[18px] text-secondary">schedule</span><span class="">Mon - Sat: 9:00 AM - 7:30 PM</span></div></div></div><div class="flex flex-col gap-space-sm lg:col-span-3"><span class="font-label-eyebrow text-label-eyebrow uppercase text-secondary tracking-wider">Quick Portals</span><nav class="flex flex-col gap-2 mt-1"><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#">Home Overview</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="featured-villa" href="#">Featured Villa</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="specifications" href="#">Luxury Specs</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="floor-plan-and-gallery" href="#">Elevations &amp; Plans</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="location-and-vastu" href="#">Vastu Principles</a></nav></div></div><div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><p class="font-caption text-caption text-on-surface-variant">© 2024 Handa Properties. All rights reserved. RERA &amp; Vastu verified luxury developments.</p><div class="flex items-center gap-space-md"><span class="font-caption text-caption text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer">Privacy Policy</span><span class="font-caption text-caption text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer">Terms of Investment</span><span class="font-caption text-caption text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer">Architectural Disclaimers</span></div></div></div></footer><div class="fixed bottom-6 right-6 z-50"><a class="group flex items-center gap-space-xs pl-space-sm pr-space-md py-space-xs bg-secondary text-on-secondary rounded-full shadow-[0_8px_24px_rgba(115,92,0,0.35)] hover:bg-secondary-container hover:text-on-secondary-container transition-all hover:scale-105 active:scale-95 animate-gold-ring" href="https://wa.me/919592261233" rel="noopener noreferrer" target="_blank"><div class="w-10 h-10 rounded-full bg-on-secondary/20 flex items-center justify-center"><span class="material-symbols-outlined text-[24px]">chat</span></div><div class="flex flex-col"><span class="font-stat-label text-caption leading-tight font-bold">Quick WhatsApp</span><span class="font-caption text-caption text-on-secondary/80 leading-tight group-hover:text-on-secondary-container/80">+91 9592261233</span></div></a></div>
+</body></html>
